@@ -11,7 +11,8 @@
         "scully:serve": "scully serve",
         "prep": "yarn build && yarn scully",
         "serve": "yarn scully:serve",
-        "prep:serve": "yarn prep && yarn serve"
+        "prep:serve": "yarn prep && yarn serve",
+        "insert": "ng generate @scullyio/init:post --target blog --name $1"
     },
     "private": true,
     "dependencies": {
