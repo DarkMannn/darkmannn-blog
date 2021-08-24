@@ -1,17 +1,15 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router, ROUTES } from '@angular/router';
 
-declare var ng: any;
-
 @Component({
-    selector: 'app-blog',
-    templateUrl: './blog.component.html',
-    styleUrls: ['./blog.component.css'],
+    selector: 'app-blog-item',
+    templateUrl: './blog-item.component.html',
+    styleUrls: ['./blog-item.component.css'],
     preserveWhitespaces: true,
     encapsulation: ViewEncapsulation.Emulated,
 })
-export class BlogComponent implements OnInit {
-    ngOnInit() {}
-
+export class BlogItemComponent implements OnInit {
     constructor(private router: Router, private route: ActivatedRoute) {}
+
+    ngOnInit(): void {}
 }

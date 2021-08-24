@@ -2,7 +2,6 @@
 title: node-js
 description: 'blog description'
 published: true
-# slug: post2
 ---
 
 # Node JS

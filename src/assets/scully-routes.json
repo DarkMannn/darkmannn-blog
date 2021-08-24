@@ -1,1 +1,1 @@
-[{"route":"/home"},{"route":"/blog/blog1","title":"2021-08-22-blog","description":"blog description","published":true,"sourceFile":"blog1.md"},{"route":"/blog/nodejs","title":"node-js","description":"blog description","published":true,"sourceFile":"nodejs.md"},{"route":"/"}]
+[{"route":"/home"},{"route":"/blog"},{"route":"/blog/blog1","title":"2021-08-22-blog","description":"blog description","published":true,"sourceFile":"blog1.md"},{"route":"/blog/nodejs","title":"node-js","description":"blog description","published":true,"sourceFile":"nodejs.md"},{"route":"/"}]
