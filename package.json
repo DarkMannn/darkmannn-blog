@@ -6,7 +6,12 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
-        "watch": "ng build --watch --configuration development"
+        "watch": "ng build --watch --configuration development",
+        "scully": "scully --scanRoutes",
+        "scully:serve": "scully serve",
+        "prep": "yarn build && yarn scully",
+        "serve": "yarn scully:serve",
+        "prep:serve": "yarn prep && yarn serve"
     },
     "private": true,
     "dependencies": {
@@ -18,6 +23,9 @@
         "@angular/platform-browser": "~12.2.0",
         "@angular/platform-browser-dynamic": "~12.2.0",
         "@angular/router": "~12.2.0",
+        "@scullyio/init": "1.1.4",
+        "@scullyio/ng-lib": "^1.0.0",
+        "@scullyio/scully": "^1.0.0",
         "rxjs": "~6.6.0",
         "tslib": "^2.3.0",
         "zone.js": "~0.11.4"
