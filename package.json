@@ -12,7 +12,7 @@
         "prep": "yarn build && yarn scully",
         "serve": "yarn scully:serve",
         "prep:serve": "yarn prep && yarn serve",
-        "insert": "ng generate @scullyio/init:post --target blog --name $1"
+        "insert": "ng generate @scullyio/init:post --target blog --meta-data-file scripts/default-frontmatter.yml --name $1"
     },
     "private": true,
     "dependencies": {
