@@ -1,1 +1,31 @@
-@import '~normalize.css';
+#blog {
+    display: grid;
+    width: 100%;
+    grid-template-areas: "header"
+                         "nav"
+                         "main"
+                         "footer";
+    grid-template-rows: 200px 50px 1fr 100px;
+    grid-template-columns: 1fr;
+  }
+  
+  #blog > header {
+    grid-area: header;
+    background-color: #8ca0ff;
+  }
+  
+  #blog > nav {
+    grid-area: nav;
+    background-color: #ffa08c;
+  }
+  
+  #blog > main {
+    grid-area: main;
+    background-color: #ffff64;
+  }
+  
+  #blog > footer {
+    grid-area: footer;
+    background-color: #8cffa0;
+  }
+  

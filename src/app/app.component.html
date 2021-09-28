@@ -1,8 +1,11 @@
-<nav>
-    <ul>
-        <li><a routerLink="/home">Home</a></li>
-        <li><a routerLink="/blog">Blog</a></li>
-    </ul>
-</nav>
-
-<router-outlet></router-outlet>
+<section id="blog">
+    <header>Darko Milosevic</header>
+    <nav>
+        <a routerLink="/home">Home</a>
+        <a routerLink="/blog">Blog</a>
+    </nav>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+    <footer>{{ year }} © Darko Milosevic</footer>
+</section>

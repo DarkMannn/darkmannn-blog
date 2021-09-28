@@ -7,14 +7,17 @@ import { Observable } from 'rxjs';
     styleUrls: ['./blog-list.component.css'],
 })
 export class BlogListComponent implements OnInit {
-    links$: Observable<ScullyRoute[]> = this.scully.available$;
+    allLinks$: Observable<ScullyRoute[]> = this.scully.available$;
+    filteredLinks!: ScullyRoute[];
 
     constructor(private scully: ScullyRoutesService) {}
 
     ngOnInit() {
-        // debug current pages
-        this.links$.subscribe((links) => {
+        this.allLinks$.subscribe((links) => {
+            // DELETEME: Remove this
             console.log(links);
+            const isBlogRoute = (route: ScullyRoute) => route?.title;
+            this.filteredLinks = links.filter(isBlogRoute);
         });
     }
 }
