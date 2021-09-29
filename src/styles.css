@@ -1,1 +1,9 @@
+/* Global Styles */
 @import '~normalize.css';
+
+/* Variables */
+:root {
+    --header-height: 150px;
+    --nav-height: 50px;
+    --footer-height: 50px;
+}

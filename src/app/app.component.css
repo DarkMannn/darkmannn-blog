@@ -1,31 +1,58 @@
+/* First level elements */
 #blog {
     display: grid;
-    width: 100%;
-    grid-template-areas: "header"
-                         "nav"
-                         "main"
-                         "footer";
-    grid-template-rows: 200px 50px 1fr 100px;
-    grid-template-columns: 1fr;
-  }
-  
-  #blog > header {
+    width: 100vw;
+    min-height: 100vh;
+    grid-template-areas:
+        'gapL header gapR'
+        'gapL nav gapR'
+        'gapL main gapR'
+        'gapL footer gapR';
+    grid-template-rows: var(--header-height) var(--nav-height) 1fr var(
+            --footer-height
+        );
+    grid-template-columns: 5vw 1fr 5vw;
+    gap: 50px;
+}
+
+#blog > header {
     grid-area: header;
     background-color: #8ca0ff;
-  }
-  
-  #blog > nav {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+#blog > nav {
     grid-area: nav;
     background-color: #ffa08c;
-  }
-  
-  #blog > main {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#blog > main {
     grid-area: main;
     background-color: #ffff64;
-  }
-  
-  #blog > footer {
+}
+
+#blog > footer {
     grid-area: footer;
     background-color: #8cffa0;
-  }
-  
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Classes */
+.nav-link {
+    display: inline-block;
+    padding: 5px;
+}
