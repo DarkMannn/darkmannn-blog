@@ -1,0 +1,11 @@
+.blog-thumbnail {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    margin: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}

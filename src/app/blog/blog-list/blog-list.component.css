@@ -1,0 +1,6 @@
+#blog-list {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: flex-start;
+}

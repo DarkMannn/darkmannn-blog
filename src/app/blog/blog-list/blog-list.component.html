@@ -1,5 +1,8 @@
-<ul>
-    <li *ngFor="let link of filteredLinks">
-        <a [routerLink]="link.route">{{ link.route }}</a>
-    </li>
-</ul>
+<section id="blog-list">
+    <div *ngFor="let link of filteredLinks">
+        <app-blog-thumbnail
+            [title]="link.title || ''"
+            [description]="link.description || ''"
+        ></app-blog-thumbnail>
+    </div>
+</section>
