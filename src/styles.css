@@ -1,9 +1,22 @@
 /* Global Styles */
 @import '~normalize.css';
 
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap');
+
 /* Variables */
 :root {
     --header-height: 150px;
     --nav-height: 50px;
     --footer-height: 50px;
+}
+
+:root {
+    font-family: 'Arimo', sans-serif;
+}
+
+/* Atomic Clases */
+.a-font-weight-100 {
+    font-weight: 100;
 }
