@@ -17,7 +17,7 @@
 
 #blog > header {
     grid-area: header;
-    background-color: #8ca0ff;
+    border: 1px solid black;
 
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@
 
 #blog > nav {
     grid-area: nav;
-    background-color: #ffa08c;
+    border: 1px solid black;
 
     display: flex;
     flex-direction: row;
@@ -37,12 +37,12 @@
 
 #blog > main {
     grid-area: main;
-    background-color: #ffff64;
+    border: 1px solid black;
 }
 
 #blog > footer {
     grid-area: footer;
-    background-color: #8cffa0;
+    border: 1px solid black;
 
     display: flex;
     flex-direction: row;

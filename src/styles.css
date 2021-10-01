@@ -10,10 +10,16 @@
     --header-height: 150px;
     --nav-height: 50px;
     --footer-height: 50px;
+
+    --color-white-saturated: rgb(238, 238, 238);
+    --color-grey-dark: rgb(169, 169, 169);
+    --color-grey-dim: rgb(105, 105, 105);
+    --color-khaki-dark: rgb(189, 183, 107);
 }
 
 :root {
     font-family: 'Arimo', sans-serif;
+    background-color: var(--color-silver-basic);
 }
 
 /* Atomic Clases */
