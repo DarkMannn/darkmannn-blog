@@ -8,17 +8,20 @@
 
 /* Variables */
 :root {
-    --header-height: 150px;
-    --nav-height: 50px;
+    --header-height: 175px;
+    --nav-height: 100px;
     --footer-height: 50px;
 
     --color-white-saturated: rgb(238, 238, 238);
     --color-grey-dark: rgb(169, 169, 169);
     --color-grey-dim: rgb(105, 105, 105);
+    --color-black-night: rgb(12, 9, 10);
+    --color-khaki-clasic: rgb(240, 230, 140);
     --color-khaki-dark: rgb(189, 183, 107);
 }
 
 :root {
     font-family: 'Lato', sans-serif;
     background-color: var(--color-silver-basic);
+    color: var(--color-black-night);
 }

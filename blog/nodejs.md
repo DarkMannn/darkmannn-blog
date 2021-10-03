@@ -1,6 +1,6 @@
 ---
 title: node-js
-description: 'blog description'
+description: 'This is a node-js article'
 published: true
 ---
 

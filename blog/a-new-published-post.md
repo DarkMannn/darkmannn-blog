@@ -1,6 +1,6 @@
 ---
 title: a-new-published-post
-description: override-description
+description: This is a new published post
 thumbnail: assets/images/dm-icon.png
 author: Darko Milosevic
 mail: darko.milosevic@darkmannn.dev

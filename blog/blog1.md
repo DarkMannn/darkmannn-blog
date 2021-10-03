@@ -1,6 +1,6 @@
 ---
 title: 2021-08-22-blog
-description: 'blog description'
+description: 'This is a blog 1'
 published: true
 ---
 
