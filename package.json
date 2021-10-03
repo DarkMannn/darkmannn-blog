@@ -4,7 +4,7 @@
     "description": "Darkmannn's personal blog",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve",
+        "start": "ng serve --port 8080",
         "build": "ng build",
         "watch": "ng build --watch --configuration development",
         "scully": "scully --scanRoutes",
