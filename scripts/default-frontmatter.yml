@@ -1,6 +1,6 @@
-title: override-title
-description: override-description
-thumbnail: assets/images/dm-icon.png
-author: Darko Milosevic
-mail: darko.milosevic@darkmannn.dev
+title: Override Title
+description: Override description
+thumbnail: assets/images/snail-right.png
+date: dd/mm/yyyy
+tag: overrride-tag
 published: true

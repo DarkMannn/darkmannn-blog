@@ -6,8 +6,11 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./blog-thumbnail.component.css'],
 })
 export class BlogThumbnailComponent {
+    @Input() thumbnail: string = '';
     @Input() title: string = '';
     @Input() description: string = '';
+    @Input() date: string = '';
+    @Input() tag: string = '';
     @Input() link: string = '';
 
     openBlogItem() {

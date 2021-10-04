@@ -1,9 +1,9 @@
 ---
-title: a-new-published-post
+title: A New Published Post
 description: This is a new published post
-thumbnail: assets/images/dm-icon.png
-author: Darko Milosevic
-mail: darko.milosevic@darkmannn.dev
+thumbnail: assets/images/snail-right.png
+date: 21/05/2019
+tag: aws
 published: true
 ---
 

@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+    rows = [
+        ['Developer', 'Blogger', 'Minimalist'],
+        ['Typescript', 'Full stack', 'AWS'],
+        ['Simplicity', 'Deliberation', 'Slowness'],
+    ];
+
     constructor() {}
 
     ngOnInit() {}

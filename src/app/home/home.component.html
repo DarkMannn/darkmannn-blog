@@ -1,6 +1,6 @@
 <section id="home">
-    <p class="home__text">Developer. Blogger. Minimalist.</p>
-    <p class="home__text">Typescript. Full-stack. AWS.</p>
-    <p class="home__text">Simplicity. Deliberation. Slowness.</p>
-    <p class="home__emoji">🐌</p>
+    <p class="home__row" *ngFor="let row of rows">
+        <span class="home__row-word" *ngFor="let item of row">{{ item }}.</span>
+    </p>
+    <img class="home__image" src="assets/images/snail-right.png" alt="snail" />
 </section>

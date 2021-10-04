@@ -1,4 +1,11 @@
 <section class="blog-thumbnail" (click)="openBlogItem()">
-    <h1>{{ title }}</h1>
-    <p>{{ description }}</p>
+    <img class="blog-thumbnail__image" [src]="thumbnail" alt="" />
+    <div class="blog-thumbnail__text">
+        <h1 class="blog-thumbnail__header">{{ title }}</h1>
+        <p class="blog-thumbnail__description">{{ description }}</p>
+    </div>
+    <div class="blog-thumbnail__metadata">
+        <span>{{ date }}</span>
+        <span>{{ tag }}</span>
+    </div>
 </section>

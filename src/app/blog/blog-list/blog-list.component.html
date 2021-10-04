@@ -1,8 +1,12 @@
 <section id="blog-list">
-    <div *ngFor="let link of filteredLinks">
+    <div *ngFor="let filteredLink of filteredLinks">
         <app-blog-thumbnail
-            [title]="link.title || ''"
-            [description]="link.description || ''"
+            [thumbnail]="filteredLink.thumbnail || ''"
+            [title]="filteredLink.title || ''"
+            [description]="filteredLink.description || ''"
+            [date]="filteredLink.date || ''"
+            [tag]="filteredLink.tag || ''"
+            [link]="filteredLink.route || ''"
         ></app-blog-thumbnail>
     </div>
 </section>

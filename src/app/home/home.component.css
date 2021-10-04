@@ -5,11 +5,23 @@
     align-items: center;
 }
 
-.home__text {
+.home__row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    width: 300px;
+
     font-size: 16px;
 }
 
-.home__emoji {
-    margin: 0;
-    font-size: 50px;
+.home__row-word {
+    width: 90px;
+    text-align: center;
+}
+
+.home__image {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
 }

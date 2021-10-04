@@ -1,6 +1,9 @@
 ---
-title: node-js
-description: 'This is a node-js article'
+title: Node JS
+description: This is a node.js
+thumbnail: assets/images/snail-right.png
+date: 01/11/2020
+tag: css
 published: true
 ---
 

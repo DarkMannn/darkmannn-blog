@@ -19,7 +19,7 @@
 
 #blog > header {
     grid-area: header;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--color-black-night);
 
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@
 
 #blog > nav {
     grid-area: nav;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--color-black-night);
 
     display: flex;
     flex-direction: row;
@@ -40,7 +40,7 @@
 #blog > main {
     padding: 20px 0 10px;
     grid-area: main;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--color-black-night);
 }
 
 #blog > footer {
