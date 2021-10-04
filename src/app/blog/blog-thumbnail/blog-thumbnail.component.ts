@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-blog-thumbnail',
@@ -13,7 +14,9 @@ export class BlogThumbnailComponent {
     @Input() tag: string = '';
     @Input() link: string = '';
 
+    constructor(private _router: Router) {}
+
     openBlogItem() {
-        console.log(this.link);
+        this._router.navigateByUrl(this.link);
     }
 }
