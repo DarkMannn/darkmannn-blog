@@ -46,6 +46,9 @@
 #blog > footer {
     grid-area: footer;
 
+    font-family: 'Roboto';
+    font-weight: 400;
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -74,8 +77,7 @@
     text-decoration: none;
     color: var(--color-khaki-dark);
 
-    transition: color 0.15s, transform 0.15s;
-    transition-timing-function: ease-in-out;
+    transition: all 0.15s ease-in;
 
     padding: 5px;
 }

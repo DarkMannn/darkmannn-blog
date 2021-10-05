@@ -10,6 +10,7 @@
     height: var(--thumbnail-height);
     border: 1px solid var(--color-black-night);
     border-radius: 10px;
+    box-shadow: 0 2px 5px var(--shadow-black-night);
     padding: 0px 0px 5px;
     margin: 10px;
 
@@ -20,11 +21,11 @@
     justify-content: flex-start;
     align-items: center;
 
-    transition: transform 0.3s;
-    transition-timing-function: ease-in-out;
+    transition: all 0.3s ease-in;
 }
 
 .blog-thumbnail:hover {
+    box-shadow: 0 4px 5px var(--shadow-black-night);
     transform: scale(1.05, 1.05);
 }
 
@@ -54,6 +55,8 @@
 .blog-thumbnail__metadata {
     width: calc(var(--thumbnail-width) - var(--thumbnail-two-padding));
     margin-top: auto;
+
+    font-weight: 700;
     color: var(--color-grey-dark);
 
     display: flex;
@@ -67,4 +70,5 @@
 
 .blog-thumbnail__description {
     font-size: 15px;
+    font-weight: 300;
 }
