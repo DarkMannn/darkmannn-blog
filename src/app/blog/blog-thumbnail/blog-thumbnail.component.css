@@ -39,7 +39,16 @@
     width: calc(var(--thumbnail-width) - var(--thumbnail-two-padding));
     max-height: 155px;
 
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.blog-thumbnail__text::-webkit-scrollbar {
+    display: none;
 }
 
 .blog-thumbnail__metadata {
