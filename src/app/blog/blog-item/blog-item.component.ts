@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router, ROUTES } from '@angular/router';
+import { ScullyRoutesService, ScullyRoute } from '@scullyio/ng-lib';
 
 @Component({
     selector: 'app-blog-item',
@@ -9,7 +9,13 @@ import { ActivatedRoute, Router, ROUTES } from '@angular/router';
     encapsulation: ViewEncapsulation.Emulated,
 })
 export class BlogItemComponent implements OnInit {
-    constructor(private router: Router, private route: ActivatedRoute) {}
+    currentLink!: ScullyRoute;
 
-    ngOnInit(): void {}
+    constructor(private scully: ScullyRoutesService) {}
+
+    ngOnInit() {
+        this.scully.getCurrent().subscribe((curLink) => {
+            this.currentLink = curLink;
+        });
+    }
 }

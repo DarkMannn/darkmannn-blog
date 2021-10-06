@@ -1,5 +1,15 @@
-<h3>ScullyIo content - HEADER</h3>
-<hr />
-<scully-content></scully-content>
-<hr />
-<h4>End of content - FOOTER</h4>
+<section class="blog-item">
+    <div class="blog-item__title">{{ currentLink?.title }}</div>
+    <div class="blog-item__metadata">
+        <span class="blog-item__metadata-date">{{ currentLink?.date }}</span>
+        <span class="blog-item__metadata-tag">{{ currentLink?.tag }}</span>
+    </div>
+    <img
+        class="blog-item__image"
+        [src]="currentLink?.thumbnail"
+        alt="thumbnail"
+    />
+    <div class="blog-item__content">
+        <scully-content></scully-content>
+    </div>
+</section>

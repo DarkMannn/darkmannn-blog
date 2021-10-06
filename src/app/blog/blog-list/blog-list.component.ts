@@ -14,10 +14,8 @@ export class BlogListComponent implements OnInit {
 
     ngOnInit() {
         this.allLinks$.subscribe((links) => {
-            // DELETEME: Remove this
-            console.log(links);
-            const isBlogRoute = (route: ScullyRoute) => route?.title;
-            this.filteredLinks = links.filter(isBlogRoute);
+            const isBlogRoutePredicate = (route: ScullyRoute) => route?.title;
+            this.filteredLinks = links.filter(isBlogRoutePredicate);
         });
     }
 }

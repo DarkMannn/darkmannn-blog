@@ -11,10 +11,9 @@
     grid-template-rows: var(--header-height) var(--nav-height) 1fr var(
             --footer-height
         );
-    grid-template-columns: minmax(3vw, 1fr) minmax(300px, 700px) minmax(
-            3vw,
-            1fr
-        );
+    grid-template-columns:
+        minmax(3vw, 1fr) minmax(var(--min-width), var(--max-width))
+        minmax(3vw, 1fr);
 }
 
 #blog > header {
@@ -38,7 +37,7 @@
 }
 
 #blog > main {
-    padding: 20px 0 10px;
+    padding: 30px 0px;
     grid-area: main;
     border-bottom: 1px solid var(--color-black-night);
 }

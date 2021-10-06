@@ -93,7 +93,7 @@
 /* 3rd level */
 .blog-thumbnail__title {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 500;
 
     margin: var(--thumbnail-margin) 0;
     color: black;

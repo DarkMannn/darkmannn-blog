@@ -2,15 +2,50 @@
 @import '~normalize.css';
 
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoMono';
+    src: url('./assets/fonts/RobotoMono-VariableFont_wght.ttf')
+        format('truetype');
+}
 
 /* Variables */
 :root {
     --header-height: 175px;
     --nav-height: 100px;
     --footer-height: 50px;
+
+    --min-width: 300px;
+    --max-width: 700px;
 
     --color-white-saturated: rgb(238, 238, 238);
     --color-grey-dark: rgb(169, 169, 169);
@@ -24,7 +59,7 @@
 }
 
 :root {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: var(--color-silver-basic);
     color: var(--color-black-night);
 }
