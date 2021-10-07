@@ -10,5 +10,34 @@
     <main>
         <router-outlet></router-outlet>
     </main>
-    <footer>{{ year }} © Darko Milosevic</footer>
+    <footer>
+        <div class="blog__footer-contact">CONTACT</div>
+        <div class="blog__footer-social">
+            <a
+                class="blog__footer-social--icon"
+                href="https://www.linkedin.com/in/{{ NICKNAME }}"
+                rel="noopener noreferrer"
+                target="_blank"
+            >
+                <svg-icon src="assets/images/linkedin-icon.svg"></svg-icon>
+            </a>
+            <a
+                class="blog__footer-social--icon"
+                href="https://github.com/{{ NICKNAME }}"
+                rel="noopener noreferrer"
+                target="_blank"
+            >
+                <svg-icon src="assets/images/github-icon.svg"></svg-icon>
+            </a>
+            <a
+                class="blog__footer-social--icon"
+                href="mailto:{{ EMAIL }}?subject=Hey {{ NICKNAME }}%21"
+                rel="noopener noreferrer"
+                target="_blank"
+            >
+                <svg-icon src="assets/images/email-icon.svg"></svg-icon>
+            </a>
+        </div>
+        <div class="blog__footer-brand">{{ YEAR }} © Darko Milosevic</div>
+    </footer>
 </section>

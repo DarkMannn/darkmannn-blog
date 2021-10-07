@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-    title = 'Blog';
-    year = new Date().getFullYear();
+    YEAR = new Date().getFullYear();
+    NICKNAME = 'darkmannn';
+    EMAIL = 'darko.milosevic@darkmannn.dev';
 }
