@@ -1,6 +1,6 @@
 ---
-title: Working with node.js streams
-description: An article that tries to summarize all of the stream API's and how to use them
+title: Working With Node.js Streams
+description: An article that tries to summarize all of the stream API's and explain how to use them.
 thumbnail: assets/images/stream.jpg
 date: 19/11/2019
 tag: node
