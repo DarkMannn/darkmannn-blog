@@ -45,3 +45,22 @@
     line-height: 1.875;
     width: 100%;
 }
+
+/* Blog - Code blocks */
+pre {
+    width: calc(100% - (3.8em + 1em));
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 1em;
+    /* padding-left: 3.8em; in the line-numbers class */
+    margin: 0;
+
+    overflow-x: scroll;
+
+    border-radius: var(--border-radius);
+}
+
+/* Blog - Images */
+p > img {
+    width: 100%;
+}

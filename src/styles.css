@@ -1,6 +1,13 @@
 /* Global Styles */
 @import '~normalize.css';
 
+/* Prism.js - code highlighting */
+/* include CSS for prism toolbar */
+@import '~prismjs/plugins/toolbar/prism-toolbar.css';
+@import '~prismjs/plugins/line-numbers/prism-line-numbers.css';
+/* check node_modules/prismjs/themes/ for the available themes */
+@import './my-prism-theme.css';
+
 /* Fonts */
 @font-face {
     font-family: 'Roboto';
@@ -47,12 +54,17 @@
     --min-width: 300px;
     --max-width: 700px;
 
+    --border-radius: 10px;
+
     --color-white-saturated: rgb(238, 238, 238);
     --color-grey-dark: rgb(169, 169, 169);
     --color-grey-dim: rgb(105, 105, 105);
     --color-black-night: rgb(12, 9, 10);
     --color-khaki-clasic: rgb(240, 230, 140);
     --color-khaki-dark: rgb(189, 183, 107);
+    --color-khaki-darker: rgb(143, 139, 81);
+    --color-blue-pale: rgb(52, 87, 139);
+    --color-blue-pastel: rgb(81, 100, 129);
 
     --shadow-black-night: rgba(12, 9, 10, 0.3);
     --shadow-khaki-dark: rgba(189, 183, 107, 0.3);
@@ -60,6 +72,6 @@
 
 :root {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--color-silver-basic);
+    background-color: var(--color-white-saturated);
     color: var(--color-black-night);
 }
