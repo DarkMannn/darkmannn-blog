@@ -14,9 +14,17 @@ export class BlogThumbnailComponent {
     @Input() tag: string = '';
     @Input() link: string = '';
 
-    constructor(private _router: Router) {}
+    isLoading = false;
+
+    constructor(private _router: Router) {
+        this.isLoading = true;
+    }
 
     openBlogItem() {
         this._router.navigateByUrl(this.link);
+    }
+
+    turnOffLoading() {
+        this.isLoading = false;
     }
 }

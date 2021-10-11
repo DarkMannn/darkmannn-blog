@@ -1,5 +1,15 @@
 <section class="blog-thumbnail" (click)="openBlogItem()">
-    <img class="blog-thumbnail__image" [src]="thumbnail" alt="thumbnail" />
+    <img
+        [ngStyle]="{ display: isLoading ? 'none' : '' }"
+        class="blog-thumbnail__image"
+        [src]="thumbnail"
+        alt="thumbnail"
+        (load)="turnOffLoading()"
+        (error)="turnOffLoading()"
+    />
+    <div *ngIf="isLoading" class="blog-thumbnail__loader">
+        <span></span><span></span><span></span>
+    </div>
     <div class="blog-thumbnail__text">
         <div class="blog-thumbnail__title">{{ title }}</div>
         <div class="blog-thumbnail__description">{{ description }}</div>

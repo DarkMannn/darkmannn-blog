@@ -49,6 +49,38 @@
 }
 
 /* 2nd level */
+.blog-thumbnail__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-black-night);
+
+    width: var(--thumbnail-width-narrow);
+    height: calc(var(--thumbnail-height-narrow) / 2);
+
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    border-bottom: 1px solid var(--color-black-night);
+}
+@media (min-width: 650px) {
+    .blog-thumbnail__loader {
+        width: calc(var(--thumbnail-width-wide) * 1 / 3);
+        height: var(--thumbnail-height-wide);
+
+        border-bottom: 0;
+        border-right: 1px solid var(--color-black-night);
+        border-top-right-radius: 0;
+        border-bottom-left-radius: var(--border-radius);
+    }
+}
+.blog-thumbnail__loader span {
+    padding: 3px;
+    margin: 3px;
+    border-radius: 100%;
+    border: 2px solid var(--color-khaki-dark);
+}
+
 .blog-thumbnail__image {
     width: var(--thumbnail-width-narrow);
     height: calc(var(--thumbnail-height-narrow) / 2);
