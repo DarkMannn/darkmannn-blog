@@ -48,6 +48,7 @@ Adapters are, in a way, for I/O. Now other than receiving/sending data from/to t
 
 Adapters and `image-reducer.js` are logically isolated and suitable for unit tests. When we’re done with that we’ll need to connect them according to our business needs. We are going to that inside `main.js` file. This file is suitable for integration testing, which we’ll see a little bit later. Here’s how the folder structure would look:
 
+```bash
     image-reducer-service/
       adapters/          - abstractions for sockets/file system etc.
         event-parser.js
@@ -59,281 +60,329 @@ Adapters and `image-reducer.js` are logically isolated and suitable for unit tes
       index.js           - entry file for serverless app
       serverless.yml
       package.json
+```
 
 The `main.js` file will export a wrapper function that will receive, by dependency injection, every adapter and core-logic function needed. This way integration test are easy to implement. Here’s how that looks at the beginning:
 
-    // main.js
-    exports.imageReducerService = async (event, FileService, ImageReducer) => {
-        const executionId = generateRandomId();
-        try {
-            console.log(`Started imageReducerService id: ${executionId}`);
-            /*----------------
+```js
+// main.js
+exports.imageReducerService = async (event, FileService, ImageReducer) => {
+    const executionId = generateRandomId();
+    try {
+        console.log(`Started imageReducerService id: ${executionId}`);
+        /*----------------
             Connect everything here
             -----------------*/
-            console.log(`Finished imageReducerService id: ${executionId}`);
-        }
-        catch (error) {
-            console.error(`Thrown imageReducerService id: ${executionId}`);
-            throw error;
-        }
-    };
+        console.log(`Finished imageReducerService id: ${executionId}`);
+    } catch (error) {
+        console.error(`Thrown imageReducerService id: ${executionId}`);
+        throw error;
+    }
+};
+```
 
 This main function will be required in the `index.js` file, which contains the actual Lambda function that will be run on AWS and injects everything into our main function:
 
-    // index.js
-    const { EventParser, FileService } = require('./adapters');
-    const ImageReducer = require('./image-reducer.js');
-    const ImageReducerService = require('./main.js');
+```js
+// index.js
+const { EventParser, FileService } = require('./adapters');
+const ImageReducer = require('./image-reducer.js');
+const ImageReducerService = require('./main.js');
 
-    exports.handler = (sqsMessage) =>
-        ImageReducerService(EventParser.parse(sqsMessage), FileService, ImageReducer);
+exports.handler = (sqsMessage) =>
+    ImageReducerService(
+        EventParser.parse(sqsMessage),
+        FileService,
+        ImageReducer
+    );
+```
 
 ## Implementing smaller pieces of code and unit tests
 
 Let’s write code and tests for the first adapter `EventParser`. The purpose of this adapter is to receive an event and to sanitize it so that our main function always gets a standard set of properties. This can be particularly interesting on AWS, because Lambda functions can be connected to lots of sources (SQS, SNS, S3 etc.), and every source has its own event schema. So `EventParser` can be used to process every one of these and output a standardized event. For now we only receive events via SQS queue, so this is how it would look:
 
-    // adapters/event-parser.js
-    const Joi = require('@hapi/joi');
+```js
+// adapters/event-parser.js
+const Joi = require('@hapi/joi');
 
-    const eventSchema = Joi.object({
-        bucket: Joi.string().required(),
-        key: Joi.string().required(),
-        format: Joi.string().valid('png', 'webp', 'jpeg').default('png')
-    });
-    const extractEvent = (sqsMessage) => sqsMessage.Records[0].body;
+const eventSchema = Joi.object({
+    bucket: Joi.string().required(),
+    key: Joi.string().required(),
+    format: Joi.string().valid('png', 'webp', 'jpeg').default('png'),
+});
+const extractEvent = (sqsMessage) => sqsMessage.Records[0].body;
 
-    exports.parse = (sqsMessage) => {
-        const eventObject = extractEvent(sqsMessage);
-        const { value: payload, error } = eventSchema.validate(eventObject);
-        if (error) {
-            throw Error(`Payload error => ${error}.`);
-        }
-        return payload;
-    };
+exports.parse = (sqsMessage) => {
+    const eventObject = extractEvent(sqsMessage);
+    const { value: payload, error } = eventSchema.validate(eventObject);
+    if (error) {
+        throw Error(`Payload error => ${error}.`);
+    }
+    return payload;
+};
+```
 
 This function just extracts nested event from the SQS payload, and ensures that the required event has every required property via `Joi` validation library. Since for the SQS, payload (or at least the outer structure) is always the same - unit tests are more than enough to ensure everything here works properly. In this article, I will write tests using the `Jest` library. Here are the tests for the `EventParser`:
 
-    const EventParser = require('../../adapters/event-parser.js');
-    const createStubbedSqsMessage = (payload) => ({ Records: [{ body: payload }] });
+```js
+const EventParser = require('../../adapters/event-parser.js');
+const createStubbedSqsMessage = (payload) => ({ Records: [{ body: payload }] });
 
-    describe('EventParser.parse() ', () => {
-        test('returns parsed params if event has required params', async () => {
-            const payload = {
-                bucket: 'bucket',
-                key: 'key',
-                format: 'jpeg'
-            };
-            const stubbedSqsMessage = createStubbedSqsMessage(payload);
-            const result = EventParser.parse(stubbedSqsMessage);
-            expect(result).toBeDefined();
-            expect(result.bucket).toBe(payload.bucket);
-            expect(result.key).toBe(payload.key);
-            expect(result.format).toBe(payload.format);
-        });
-        test('throws when event object has missing required params', async () => {
-            const payload = {
-                bucket: 'bucket'
-            };
-            const stubbedSqsMessage = createStubbedSqsMessage(payload);
-            expect(() => EventParser.parse(stubbedSqsMessage)).toThrow();
-        });
-        test('throws when event has required params with incorrect type', async () => {
-            const payload = {
-                bucket: ['bucket'],
-                key: 'key'
-            };
-            const stubbedSqsMessage = createStubbedSqsMessage(payload);
-            expect(() => EventParser.parse(stubbedSqsMessage)).toThrow();
-        });
+describe('EventParser.parse() ', () => {
+    test('returns parsed params if event has required params', async () => {
+        const payload = {
+            bucket: 'bucket',
+            key: 'key',
+            format: 'jpeg',
+        };
+        const stubbedSqsMessage = createStubbedSqsMessage(payload);
+        const result = EventParser.parse(stubbedSqsMessage);
+        expect(result).toBeDefined();
+        expect(result.bucket).toBe(payload.bucket);
+        expect(result.key).toBe(payload.key);
+        expect(result.format).toBe(payload.format);
     });
+    test('throws when event object has missing required params', async () => {
+        const payload = {
+            bucket: 'bucket',
+        };
+        const stubbedSqsMessage = createStubbedSqsMessage(payload);
+        expect(() => EventParser.parse(stubbedSqsMessage)).toThrow();
+    });
+    test('throws when event has required params with incorrect type', async () => {
+        const payload = {
+            bucket: ['bucket'],
+            key: 'key',
+        };
+        const stubbedSqsMessage = createStubbedSqsMessage(payload);
+        expect(() => EventParser.parse(stubbedSqsMessage)).toThrow();
+    });
+});
+```
 
 The second adapter, `FileService`, should have the functionality to fetch an image and to upload an image. We are going to implement that with streams, using Amazon’s sdk:
 
-    // adapters/file-service.js
-    const Assert = require('assert');
-    const { Writable } = require('stream');
-    const Aws = require('aws-sdk');
+```js
+// adapters/file-service.js
+const Assert = require('assert');
+const { Writable } = require('stream');
+const Aws = require('aws-sdk');
 
-    exports.S3 = new Aws.S3();
-    exports.fetchFileAsReadable = (bucket, key) => {
-        Assert(bucket && key, '"bucket" and "key" parameters must be defined');
-        return exports.S3.getObject({ Bucket: bucket, Key: key}).createReadStream();
-    }
-    exports.uploadFileAsWritable = (bucket, key, writable) => {
-        Assert(bucket && key, '"bucket" and "key" parameters must be defined');
-        Assert(
-          writable instanceof Writable,
-          '"writable" must be an instance of stream.Writable class'
-        );
-        return exports.S3.upload({
-            Bucket: bucket, Key: key, Body: writable, ACL: 'private'
-        }).promise();
-    }
+exports.S3 = new Aws.S3();
+exports.fetchFileAsReadable = (bucket, key) => {
+    Assert(bucket && key, '"bucket" and "key" parameters must be defined');
+    return exports.S3.getObject({
+        Bucket: bucket,
+        Key: key,
+    }).createReadStream();
+};
+exports.uploadFileAsWritable = (bucket, key, writable) => {
+    Assert(bucket && key, '"bucket" and "key" parameters must be defined');
+    Assert(
+        writable instanceof Writable,
+        '"writable" must be an instance of stream.Writable class'
+    );
+    return exports.S3.upload({
+        Bucket: bucket,
+        Key: key,
+        Body: writable,
+        ACL: 'private',
+    }).promise();
+};
+```
 
 There aren’t any benefits in testing the `Aws.S3` lib, since it is well meintained. Only thing that can go wrong there is if Lambda doesn’t have internet access, which will be covered in the end-to-end test. Things that we can potentially test here are detection of invalid parameters and/or proper passing of function parameters to the sdk. Since the functions are very small in this case, I’m going to only test the first case. Here it is:
 
-    const FileService = require('../../adapters/file-service.js');
+```js
+const FileService = require('../../adapters/file-service.js');
 
-    describe('FileService', () => {
-        describe('fetchFileAsReadable()', () => {
-            test('throws if parameters is are undefined', async () => {
-                expect(() => FileService.fetchFileAsReadable())
-                    .toThrow('"bucket" and "key" parameters must be defined');
-            });
-        });
-        describe('uploadFileAsWritable()', () => {
-            it('throws if last argument is not a writable stream', async () => {
-                expect(() => FileService.uploadFileAsWritable('bucket', 'key', {}))
-                    .toThrow('"writable" must be an instance of stream.Writable class');
-            });
+describe('FileService', () => {
+    describe('fetchFileAsReadable()', () => {
+        test('throws if parameters is are undefined', async () => {
+            expect(() => FileService.fetchFileAsReadable()).toThrow(
+                '"bucket" and "key" parameters must be defined'
+            );
         });
     });
+    describe('uploadFileAsWritable()', () => {
+        it('throws if last argument is not a writable stream', async () => {
+            expect(() =>
+                FileService.uploadFileAsWritable('bucket', 'key', {})
+            ).toThrow(
+                '"writable" must be an instance of stream.Writable class'
+            );
+        });
+    });
+});
+```
 
 Next thing to implement and test is the core Lambda logic, i.e reducing and reformatting of images. We’re going to keep it short and simple, using `Sharp` library for Node.js:
 
-    // image-reducer.js
-    const Sharp = require('sharp');
-    const WIDTH = 320;
-    const HEIGHT = 240;
+```js
+// image-reducer.js
+const Sharp = require('sharp');
+const WIDTH = 320;
+const HEIGHT = 240;
 
-    exports.createTransformable = (format = 'png', width = WIDTH, height = HEIGHT) =>
-        format === 'jpeg' ? Sharp().resize(width, height).jpeg() :
-        format === 'webp' ? Sharp().resize(width, height).webp() :
-        Sharp().resize(width, height).png()
+exports.createTransformable = (
+    format = 'png',
+    width = WIDTH,
+    height = HEIGHT
+) =>
+    format === 'jpeg'
+        ? Sharp().resize(width, height).jpeg()
+        : format === 'webp'
+        ? Sharp().resize(width, height).webp()
+        : Sharp().resize(width, height).png();
+```
 
 This functions takes certain parameters, and creates a transform stream that can receive readable stream of image binary data and transform it into smaller image with a different format. Using a little bit of Node’s stream magic, we can test all of this pretty easily, by creating readable and writable stream stubs:
 
-    const Path = require('path');
-    const Fs = require('fs');
-    const Sharp = require('sharp');
-    const ImageReducer = require('../image-reducer.js');
+```js
+const Path = require('path');
+const Fs = require('fs');
+const Sharp = require('sharp');
+const ImageReducer = require('../image-reducer.js');
 
-    const BIG_IMAGE_PATH = Path.join(__dirname, '/big-lambda.png');
-    const SMALL_IMAGE_PATH_PNG = Path.join(__dirname, '/small-lambda.png');
-    const SMALL_IMAGE_PATH_WEBP = Path.join(__dirname, '/small-lambda.webp');
-    const SMALL_IMAGE_PATH_JPEF = Path.join(__dirname, '/small-lambda.jpeg');
+const BIG_IMAGE_PATH = Path.join(__dirname, '/big-lambda.png');
+const SMALL_IMAGE_PATH_PNG = Path.join(__dirname, '/small-lambda.png');
+const SMALL_IMAGE_PATH_WEBP = Path.join(__dirname, '/small-lambda.webp');
+const SMALL_IMAGE_PATH_JPEF = Path.join(__dirname, '/small-lambda.jpeg');
 
-    describe('ImageReducer.createTransformable()', () => {
-        describe('reducing size and transforming image in .png format', () => {
-            test('reducing image', async () => {
-                const readable = Fs.createReadStream(BIG_IMAGE_PATH);
-                const imageReductionTransformable = ImageReducer.createTransformable();
-                const writable = Fs.createWriteStream(SMALL_IMAGE_PATH_PNG);
+describe('ImageReducer.createTransformable()', () => {
+    describe('reducing size and transforming image in .png format', () => {
+        test('reducing image', async () => {
+            const readable = Fs.createReadStream(BIG_IMAGE_PATH);
+            const imageReductionTransformable =
+                ImageReducer.createTransformable();
+            const writable = Fs.createWriteStream(SMALL_IMAGE_PATH_PNG);
 
-                readable.pipe(imageReductionTransformable).pipe(writable);
-                await new Promise(resolve => writable.on('finish', resolve));
+            readable.pipe(imageReductionTransformable).pipe(writable);
+            await new Promise((resolve) => writable.on('finish', resolve));
 
-                const newImageMetadata = await Sharp(SMALL_IMAGE_PATH_PNG).metadata();
-                expect(newImageMetadata.format).toBe('png');
-                expect(newImageMetadata.width).toBe(320);
-                expect(newImageMetadata.height).toBe(240);
-            });
-        });
-        describe('reducing size and transforming image in .webp format', () => {
-            test('reducing image', async () => {
-                const readable = Fs.createReadStream(BIG_IMAGE_PATH);
-                const imageReductionTransformable = ImageReducer
-                  .createTransformable('webp', 200, 100);
-                const writable = Fs.createWriteStream(SMALL_IMAGE_PATH_WEBP);
-
-                readable.pipe(imageReductionTransformable).pipe(writable);
-                await new Promise(resolve => writable.on('finish', resolve));
-
-                const newImageMetadata = await Sharp(SMALL_IMAGE_PATH_WEBP).metadata();
-                expect(newImageMetadata.format).toBe('webp');
-                expect(newImageMetadata.width).toBe(200);
-                expect(newImageMetadata.height).toBe(100);
-            });
-        });
-        describe('reducing size and transforming image in .jpeg format', () => {
-            test('reducing image', async () => {
-                const readable = Fs.createReadStream(BIG_IMAGE_PATH);
-                const imageReductionTransformable = ImageReducer
-                  .createTransformable('jpeg', 200, 200);
-                const writable = Fs.createWriteStream(SMALL_IMAGE_PATH_JPEF);
-
-                readable.pipe(imageReductionTransformable).pipe(writable);
-                await new Promise(resolve => writable.on('finish', resolve));
-
-                const newImageMetadata = await Sharp(SMALL_IMAGE_PATH_JPEF).metadata();
-                expect(newImageMetadata.format).toBe('jpeg');
-                expect(newImageMetadata.width).toBe(200);
-                expect(newImageMetadata.height).toBe(200);
-            });
+            const newImageMetadata = await Sharp(
+                SMALL_IMAGE_PATH_PNG
+            ).metadata();
+            expect(newImageMetadata.format).toBe('png');
+            expect(newImageMetadata.width).toBe(320);
+            expect(newImageMetadata.height).toBe(240);
         });
     });
+    describe('reducing size and transforming image in .webp format', () => {
+        test('reducing image', async () => {
+            const readable = Fs.createReadStream(BIG_IMAGE_PATH);
+            const imageReductionTransformable =
+                ImageReducer.createTransformable('webp', 200, 100);
+            const writable = Fs.createWriteStream(SMALL_IMAGE_PATH_WEBP);
+
+            readable.pipe(imageReductionTransformable).pipe(writable);
+            await new Promise((resolve) => writable.on('finish', resolve));
+
+            const newImageMetadata = await Sharp(
+                SMALL_IMAGE_PATH_WEBP
+            ).metadata();
+            expect(newImageMetadata.format).toBe('webp');
+            expect(newImageMetadata.width).toBe(200);
+            expect(newImageMetadata.height).toBe(100);
+        });
+    });
+    describe('reducing size and transforming image in .jpeg format', () => {
+        test('reducing image', async () => {
+            const readable = Fs.createReadStream(BIG_IMAGE_PATH);
+            const imageReductionTransformable =
+                ImageReducer.createTransformable('jpeg', 200, 200);
+            const writable = Fs.createWriteStream(SMALL_IMAGE_PATH_JPEF);
+
+            readable.pipe(imageReductionTransformable).pipe(writable);
+            await new Promise((resolve) => writable.on('finish', resolve));
+
+            const newImageMetadata = await Sharp(
+                SMALL_IMAGE_PATH_JPEF
+            ).metadata();
+            expect(newImageMetadata.format).toBe('jpeg');
+            expect(newImageMetadata.width).toBe(200);
+            expect(newImageMetadata.height).toBe(200);
+        });
+    });
+});
+```
 
 ## Connecting everything and writing integration tests
 
 The purpose of integration tests is to test contracts/integration between two or more code components that are already well tested with unit tests. Since we didn’t integrate all of the above written code, we will do that now:
 
-    // main.js
-    const { promisify } = require('util');
-    const { PassThrough, pipeline } = require('stream');
-    const { generateRandomId, appendSuffix } = require('./utils');
-    const pipelineAsync = promisify(pipeline);
+```js
+// main.js
+const { promisify } = require('util');
+const { PassThrough, pipeline } = require('stream');
+const { generateRandomId, appendSuffix } = require('./utils');
+const pipelineAsync = promisify(pipeline);
 
-    exports.imageReducerService = async (event, FileService, ImageReducer) => {
-        const executionId = generateRandomId();
-        try {
-            console.log(`Started imageReducerService id: ${executionId}`);
+exports.imageReducerService = async (event, FileService, ImageReducer) => {
+    const executionId = generateRandomId();
+    try {
+        console.log(`Started imageReducerService id: ${executionId}`);
 
-            const { bucket, key, format } = event;
-            const readable = FileService.fetchFileAsReadable(bucket, key);
-            const imageReductionTransformable = ImageReducer.createTransformable(format);
-            const writable = new PassThrough();
+        const { bucket, key, format } = event;
+        const readable = FileService.fetchFileAsReadable(bucket, key);
+        const imageReductionTransformable =
+            ImageReducer.createTransformable(format);
+        const writable = new PassThrough();
 
-            const newKey = appendSuffix(key, format);
-            const pipelineProcess = pipelineAsync(
-              readable,
-              imageReductionTransformable,
-              writable
-            );
-            const uploadProcess = FileService
-              .uploadFileAsWritable(bucket, newKey, writable);
-            await Promise.all([pipelineProcess, uploadProcess]);
+        const newKey = appendSuffix(key, format);
+        const pipelineProcess = pipelineAsync(
+            readable,
+            imageReductionTransformable,
+            writable
+        );
+        const uploadProcess = FileService.uploadFileAsWritable(
+            bucket,
+            newKey,
+            writable
+        );
+        await Promise.all([pipelineProcess, uploadProcess]);
 
-            console.log(`Finished imageReducerService id: ${executionId}`);
-        }
-        catch (error) {
-            console.error(`Thrown imageReducerService id: ${executionId}`);
-            throw error;
-        }
-    };
+        console.log(`Finished imageReducerService id: ${executionId}`);
+    } catch (error) {
+        console.error(`Thrown imageReducerService id: ${executionId}`);
+        throw error;
+    }
+};
+```
 
 This code takes the parsed event, after it has been sanitized by our `EventParser`, based on it it fetches an image from the S3 in form of a readable stream on line 13, creates image reduction transform stream on line 14, and creates a writable stream on line 15. Pipe chain is then created between the readable, transform and writable stream on line 18. Next the writable stream begins uploading on the S3 bucket on line 23. In other words, all this code does is fetching, resizing and uploading of images in a stream form.
 
 Since this example Lambda function we are writing is not so big, all of the wiring was done in a single file, and we can cover it with a single test. In other situations splitting it into several tests might be a good idea. Here’s our test:
 
-    require('dotenv').config();
-    const { EventParser, FileService, ImageReducer } = require('../adapters');
-    const { imageReducerService } = require('../main.js');
-    const { appendSuffix } = require('../utils');
-    const createFakeSqsMessage = (payload) => ({ Records: [{ body: payload }] });
+```js
+require('dotenv').config();
+const { EventParser, FileService, ImageReducer } = require('../adapters');
+const { imageReducerService } = require('../main.js');
+const { appendSuffix } = require('../utils');
+const createFakeSqsMessage = (payload) => ({ Records: [{ body: payload }] });
 
-    describe('ImageReducerService', () => {
-        test('integration', async () => {
-            const realBucket = process.env.BUCKET;
-            const existingFileKey = process.env.KEY;
-            const sqsMessage = createFakeSqsMessage({
-                bucket: realBucket,
-                key: existingFileKey
-            });
-            await imageReducerService(
-              EventParser.parse(sqsMessage),
-              FileService,
-              ImageReducer
-            );
-            // check if the new reduced image exists on the S3 bucket
-            const reducedImageMetadata = await FileService.S3
-                .headObject({
-                  bucket: realBucket,
-                  key: appendSuffix(existingFileKey, 'png')
-                })
-                .promise();
-            expect(reducedImageMetadata).toBeDefined();
-       });
+describe('ImageReducerService', () => {
+    test('integration', async () => {
+        const realBucket = process.env.BUCKET;
+        const existingFileKey = process.env.KEY;
+        const sqsMessage = createFakeSqsMessage({
+            bucket: realBucket,
+            key: existingFileKey,
+        });
+        await imageReducerService(
+            EventParser.parse(sqsMessage),
+            FileService,
+            ImageReducer
+        );
+        // check if the new reduced image exists on the S3 bucket
+        const reducedImageMetadata = await FileService.S3.headObject({
+            bucket: realBucket,
+            key: appendSuffix(existingFileKey, 'png'),
+        }).promise();
+        expect(reducedImageMetadata).toBeDefined();
     });
+});
+```
 
 This test here is actually targeting a real S3 bucket, using environment variables. There are upsides and downsides to this approach. Upside is that it is more realistic, almost like an end-to-end test (if we don’t count that the payload actually doesn’t originate from a real SQS queue). Downside is that it is fragile, and can actually be a flaky test since sometimes connection might be down.
 
@@ -345,41 +394,47 @@ For this Lambda I would just go with the first path since the complexity is not 
 
 If you recall, everything we wrote is integrated into a single line of code (well actually two lines, but only because of the formatting 🙂 ), and it looks like this:
 
-    const { EventParser, FileService } = require('./adapters');
-    const ImageReducer = require('./image-reducer.js');
-    const ImageReducerService = require('./main.js');
+```js
+const { EventParser, FileService } = require('./adapters');
+const ImageReducer = require('./image-reducer.js');
+const ImageReducerService = require('./main.js');
 
-    exports.handler = (sqsMessage) =>
-        ImageReducerService(EventParser.parse(sqsMessage), FileService, ImageReducer);
+exports.handler = (sqsMessage) =>
+    ImageReducerService(
+        EventParser.parse(sqsMessage),
+        FileService,
+        ImageReducer
+    );
+```
 
 We finished all of the unit/integration tests we need, it’s time to test our function in real life conditions, using real AWS infrastructure. Since our Lambda function receives events from an SQS queue, we need to insert a message into the queue which is connected to the function, and assert if a new image exist on a given S3 bucket after the function has finished the execution.
 
-    require('dotenv').config();
-    const Aws = require('aws-sdk');
-    const { appendSuffix } = require('../utils');
+```js
+require('dotenv').config();
+const Aws = require('aws-sdk');
+const { appendSuffix } = require('../utils');
 
-    Aws.config.update({region: 'us-east-1'});
-    const Sqs = new Aws.SQS({ apiVersion: '2012-11-05' });
-    const S3 = new Aws.S3();
+Aws.config.update({ region: 'us-east-1' });
+const Sqs = new Aws.SQS({ apiVersion: '2012-11-05' });
+const S3 = new Aws.S3();
 
-    describe('imageReducerService', () => {
-        test('end-to-end functionality', async () => {
-            const event = { bucket: process.env.BUCKET, key: process.env.KEY };
-            const params = {
-              MessageBody: JSON.strigify(event),
-              QueueUrl: process.env.SQS_QUEUE
-            };
-            await Sqs.sendMessage(params).promise();
+describe('imageReducerService', () => {
+    test('end-to-end functionality', async () => {
+        const event = { bucket: process.env.BUCKET, key: process.env.KEY };
+        const params = {
+            MessageBody: JSON.strigify(event),
+            QueueUrl: process.env.SQS_QUEUE,
+        };
+        await Sqs.sendMessage(params).promise();
 
-            const reducedImageMetadata = await S3
-                .headObject({
-                  bucket: realBucket,
-                  key: appendSuffix(existingFileKey, 'png')
-                })
-                .promise();
-            expect(reducedImageMetadata).toBeDefined();
-        });
+        const reducedImageMetadata = await S3.headObject({
+            bucket: realBucket,
+            key: appendSuffix(existingFileKey, 'png'),
+        }).promise();
+        expect(reducedImageMetadata).toBeDefined();
     });
+});
+```
 
 This test encompasses every piece of the infrastructure that our lambda is going to use, testing if everything is connected properly. It creates an action flow exactly like it would be in real time, thus it requires that everything is already up and running on AWS.
 
