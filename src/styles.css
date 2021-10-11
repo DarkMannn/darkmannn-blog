@@ -1,4 +1,4 @@
-/* Global Styles */
+/* Normalize styles */
 @import '~normalize.css';
 
 /* Prism.js - code highlighting */
@@ -70,8 +70,26 @@
     --shadow-khaki-dark: rgba(189, 183, 107, 0.3);
 }
 
+/* Defaults */
 :root {
     font-family: 'Roboto', sans-serif;
     background-color: var(--color-white-saturated);
     color: var(--color-black-night);
+}
+
+a {
+    font-weight: 500;
+    transition: all 0.15s ease-in;
+}
+a:link {
+    color: var(--color-khaki-dark);
+}
+a:visited {
+    color: var(--color-khaki-dark);
+}
+a:hover {
+    color: var(--color-grey-dim);
+}
+a:active {
+    color: var(--color-grey-dim);
 }
