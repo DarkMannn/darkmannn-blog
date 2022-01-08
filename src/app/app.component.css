@@ -76,14 +76,14 @@
 .blog__nav-link {
     font-weight: 700;
     text-decoration: none;
-    color: var(--color-khaki-dark);
+    color: var(--color-green-moss-old);
 
     padding: 5px;
 
     transition: all 0.15s ease-in;
 }
 .blog__nav-link:hover {
-    color: var(--color-grey-dim);
+    color: var(--color-green-moss-dark);
     transform: scale(1.1, 1.1);
 }
 
@@ -108,12 +108,12 @@
     width: 30px;
     height: 30px;
 
-    color: var(--color-khaki-dark);
+    color: var(--color-green-moss-old);
 
     transition: all 0.15s ease-in;
 }
 .blog__footer-social--icon:hover {
-    color: var(--color-grey-dim);
+    color: var(--color-green-moss-dark);
     transform: scale(1.1, 1.1);
 }
 

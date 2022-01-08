@@ -90,7 +90,7 @@ pre[class*='language-'] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-    color: var(--color-grey-dim);
+    color: var(--color-green-moss-dark);
 }
 
 .token.selector,
@@ -107,7 +107,7 @@ pre[class*='language-'] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-    color: var(--color-khaki-darker);
+    color: var(--color-green-moss-dark);
 }
 
 .token.atrule,
@@ -118,13 +118,13 @@ pre[class*='language-'] {
 
 .token.function,
 .token.class-name {
-    color: var(--color-khaki-dark);
+    color: var(--color-green-moss-old);
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-    color: var(--color-khaki-clasic);
+    color: var(--color-green-moss);
 }
 
 .token.important,
