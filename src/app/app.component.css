@@ -59,6 +59,8 @@
     font-family: 'Roboto';
     font-weight: 100;
     font-size: 55px;
+
+    text-align: center;
 }
 
 .blog__header-2 {
@@ -67,6 +69,8 @@
     font-family: 'Roboto';
     font-weight: 700;
     font-size: 18px;
+
+    text-align: center;
 }
 
 .blog__nav-link {

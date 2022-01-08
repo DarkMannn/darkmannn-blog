@@ -9,7 +9,7 @@ export class HomeComponent implements OnInit {
     rows = [
         ['Developer', 'Blogger', 'Minimalist'],
         ['Typescript', 'Full stack', 'AWS'],
-        ['Simplicity', 'Deliberation', 'Slowness'],
+        ['Simplicity', 'Deliberation', 'Thoroughness'],
     ];
 
     constructor() {}
