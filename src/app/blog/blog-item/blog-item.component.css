@@ -46,6 +46,15 @@
     width: 100%;
 }
 
+.blog-item__content > h3 {
+    color: var(--color-green-moss-old);
+}
+
+.blog-item__content > h2,
+h4 {
+    color: var(--color-green-moss-dark);
+}
+
 /* Blog - Code blocks */
 pre {
     width: calc(100% - (3.8em + 1em));

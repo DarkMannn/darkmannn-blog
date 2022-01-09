@@ -10,7 +10,7 @@ export const config: ScullyConfig = {
         '/slow-programmer/blog/:slug': {
             type: 'contentFolder',
             slug: {
-                folder: './blog',
+                folder: './blog-posts',
             },
         },
     },

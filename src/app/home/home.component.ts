@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
     rows = [
-        ['Developer', 'Blogger', 'Minimalist'],
-        ['Typescript', 'Full stack', 'AWS'],
-        ['Simplicity', 'Deliberation', 'Thoroughness'],
+        ['WHO'],
+        ['developer', 'blogger', 'minimalist'],
+        ['WHAT'],
+        ['typescript', 'full-stack', 'aws'],
+        ['HOW'],
+        ['slowly', 'thoroughly', 'with_focus'],
     ];
 
     constructor() {}

@@ -551,7 +551,7 @@ And here is our simple but nice web page:
 
 ![](https://paper-attachments.dropbox.com/s_F7642B9D951EEC078DDEC6615141FDE8949A5DF8A46D4A461DB62C03B25E5E40_1587502471867_Screenshot_20200421_225410.png)
 
-## Summary
+# Summary
 
 Phew, this article ended up being longer than I expected. For you, avid readers, here is the summary of what we did here:
 

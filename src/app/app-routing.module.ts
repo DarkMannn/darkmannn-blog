@@ -12,13 +12,11 @@ const routes: Routes = [
             },
             {
                 path: 'home',
-                pathMatch: 'full',
                 loadChildren: () =>
                     import('./home/home.module').then((m) => m.HomeModule),
             },
             {
                 path: 'blog',
-                pathMatch: 'full',
                 loadChildren: () =>
                     import('./blog/blog.module').then((m) => m.BlogModule),
             },
