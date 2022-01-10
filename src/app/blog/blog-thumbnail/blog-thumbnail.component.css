@@ -144,7 +144,7 @@
 .blog-thumbnail__metadata {
     width: calc(var(--thumbnail-width-narrow) - var(--thumbnail-two-padding));
 
-    font-weight: 700;
+    font-weight: 400;
     color: var(--color-grey-dark);
 
     flex: 1 0 auto;
