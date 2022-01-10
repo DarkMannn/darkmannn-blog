@@ -65,8 +65,6 @@ pre {
     margin: 0;
 
     overflow-x: scroll;
-
-    border-radius: var(--border-radius);
 }
 
 /* Blog - Images */
