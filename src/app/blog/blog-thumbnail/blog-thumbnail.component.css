@@ -15,7 +15,7 @@
     width: var(--thumbnail-width-narrow);
     height: var(--thumbnail-height-narrow);
 
-    box-shadow: 0 2px 5px var(--shadow-black-night);
+    box-shadow: 0 2px 5px var(--shadow-black-turtle);
 
     padding: 0px 0px var(--thumbnail-padding);
     margin: var(--thumbnail-margin);
@@ -29,7 +29,7 @@
     cursor: pointer;
 }
 .blog-thumbnail:hover {
-    box-shadow: 0 4px 5px var(--shadow-black-night);
+    box-shadow: 0 4px 5px var(--shadow-black-turtle);
     transform: scale(1.05, 1.05);
 }
 @media (min-width: 650px) {
@@ -52,7 +52,7 @@
     justify-content: center;
     align-items: center;
 
-    background-color: var(--color-black-night);
+    background-color: var(--color-black-turtle);
 
     width: var(--thumbnail-width-narrow);
     height: calc(var(--thumbnail-height-narrow) / 2);
@@ -67,7 +67,7 @@
     padding: 3px;
     margin: 3px;
     border-radius: 100%;
-    border: 2px solid var(--color-green-moss-old);
+    border: 2px solid var(--color-green-turtle);
 }
 
 .blog-thumbnail__image {
@@ -91,7 +91,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    color: var(--color-green-moss-dark);
 }
 @media (min-width: 650px) {
     .blog-thumbnail__text {
@@ -116,7 +115,7 @@
     font-weight: 400;
 
     margin: var(--thumbnail-margin) 0;
-    color: black;
+    color: var(--color-black-turtle);
 
     flex: 0 1 auto;
     overflow: hidden;
@@ -145,7 +144,7 @@
     width: calc(var(--thumbnail-width-narrow) - var(--thumbnail-two-padding));
 
     font-weight: 400;
-    color: var(--color-grey-dark);
+    color: var(--color-teal-turtle);
 
     flex: 1 0 auto;
 

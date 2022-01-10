@@ -9,7 +9,7 @@
 .home__title {
     font-size: 30px;
     font-weight: 400;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid var(--color-black-turtle);
     text-transform: uppercase;
 
     padding-bottom: 30px;
@@ -20,7 +20,6 @@
     max-width: 400px;
     font-size: 16px;
     font-family: 'RobotoMono';
-    color: var(--color-green-moss-dark);
 }
 
 .home__divider {
@@ -36,7 +35,7 @@
     padding: 5px 0;
     margin-bottom: 0;
 
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     text-align: left;
 }
@@ -49,10 +48,10 @@
     width: 300px;
     margin-top: 0;
 
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     font-family: 'RobotoMono';
-    color: var(--color-green-moss-dark);
+    color: var(--color-lime-turtle);
 }
 
 .home__row-words-item {

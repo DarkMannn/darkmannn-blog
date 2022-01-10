@@ -47,6 +47,7 @@
 
 /* Variables */
 :root {
+    /* Measurments */
     --header-height: 300px;
     --nav-height: 100px;
     --footer-height: 400px;
@@ -54,26 +55,20 @@
     --min-width: 300px;
     --max-width: 700px;
 
-    --color-white-bright: rgba(248, 248, 248);
-    --color-white-saturated: rgb(238, 238, 238);
-    --color-grey-dark: rgb(169, 169, 169);
-    --color-grey-dim: rgb(105, 105, 105);
-    --color-black-night: rgb(12, 9, 10);
-    --color-green-moss: rgb(138, 154, 91);
-    --color-green-moss-old: rgb(134, 126, 54);
-    --color-green-moss-dark: rgb(74, 93, 35);
-    --color-blue-pale: rgb(52, 87, 139);
-    --color-blue-pastel: rgb(81, 100, 129);
-
-    --shadow-black-night: rgba(12, 9, 10, 0.3);
-    --shadow-green-moss-dark: rgba(55, 70, 26, 0.3);
+    /* Color palette */
+    --color-black-turtle: #1a1a14;
+    --color-navy-turtle: #182c48;
+    --color-lime-turtle: #91bd87;
+    --color-green-turtle: #484b26;
+    --color-teal-turtle: #6c87b7;
+    --shadow-black-turtle: rgb(26, 26, 20, 0.3);
 }
 
 /* Defaults */
 :root {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--color-white-saturated);
-    color: var(--color-black-night);
+    background-color: white;
+    color: var(--color-black-turtle);
 }
 
 a {
@@ -81,14 +76,14 @@ a {
     transition: all 0.15s ease-in;
 }
 a:link {
-    color: var(--color-green-moss-old);
+    color: var(--color-lime-turtle);
 }
 a:visited {
-    color: var(--color-green-moss-old);
+    color: var(--color-lime-turtle);
 }
 a:hover {
-    color: var(--color-green-moss-dark);
+    color: var(--color-green-turtle);
 }
 a:active {
-    color: var(--color-green-moss-dark);
+    color: var(--color-green-turtle);
 }
