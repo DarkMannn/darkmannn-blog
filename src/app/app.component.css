@@ -18,17 +18,19 @@
 
 #blog > header {
     grid-area: header;
-    border-bottom: 1px solid var(--color-black-night);
+    border-bottom: 1px solid var(--color-black-turtle);
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    cursor: pointer;
 }
 
 #blog > nav {
     grid-area: nav;
-    border-bottom: 1px solid var(--color-black-night);
+    border-bottom: 1px solid var(--color-black-turtle);
 
     display: flex;
     flex-direction: row;
@@ -39,8 +41,8 @@
 #blog > main {
     grid-area: main;
 
-    padding: 40px 0 100px;
-    border-bottom: 1px solid var(--color-black-night);
+    padding: 100px 0;
+    border-bottom: 1px solid var(--color-black-turtle);
 }
 
 #blog > footer {
@@ -48,17 +50,21 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
+
+    padding-top: 100px;
 }
 
 /* Classes */
 .blog__header-1 {
-    margin: 0;
+    margin: 0 0 2px 0;
 
     font-family: 'Roboto';
     font-weight: 100;
     font-size: 55px;
+
+    text-align: center;
 }
 
 .blog__header-2 {
@@ -67,31 +73,36 @@
     font-family: 'Roboto';
     font-weight: 700;
     font-size: 18px;
+
+    text-align: center;
+    color: var(--color-teal-turtle);
 }
 
 .blog__nav-link {
     font-weight: 700;
     text-decoration: none;
-    color: var(--color-khaki-dark);
+    color: var(--color-lime-turtle);
 
     padding: 5px;
 
     transition: all 0.15s ease-in;
 }
 .blog__nav-link:hover {
-    color: var(--color-grey-dim);
+    color: var(--color-green-turtle);
     transform: scale(1.1, 1.1);
 }
 
 .blog__footer-contact {
     font-size: 30px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--color-black-turtle);
 
     padding-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .blog__footer-social {
     width: 300px;
+    margin-bottom: 30px;
 
     display: flex;
     flex-direction: row;
@@ -104,12 +115,12 @@
     width: 30px;
     height: 30px;
 
-    color: var(--color-khaki-dark);
+    color: var(--color-lime-turtle);
 
     transition: all 0.15s ease-in;
 }
 .blog__footer-social--icon:hover {
-    color: var(--color-grey-dim);
+    color: var(--color-green-turtle);
     transform: scale(1.1, 1.1);
 }
 

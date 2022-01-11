@@ -4,85 +4,65 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
-    color: var(--color-black-night);
-    background: none;
-    text-shadow: 0 1px white;
-    font-family: RobotoMono, monospace;
+    color: #182c48;
     font-size: 1em;
+    text-shadow: none;
+    font-family: RobotoMono, monospace;
+    direction: ltr;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
-    word-wrap: normal;
     line-height: 1.5;
-
     -moz-tab-size: 4;
     -o-tab-size: 4;
     tab-size: 4;
-
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
 }
 
-pre[class*='language-']::-moz-selection,
-pre[class*='language-'] ::-moz-selection,
-code[class*='language-']::-moz-selection,
-code[class*='language-'] ::-moz-selection {
-    text-shadow: none;
-    background: #b3d4fc;
-}
-
 pre[class*='language-']::selection,
-pre[class*='language-'] ::selection,
 code[class*='language-']::selection,
-code[class*='language-'] ::selection {
+pre[class*='language-']::mozselection,
+code[class*='language-']::mozselection {
     text-shadow: none;
-    background: #b3d4fc;
+    background: #cccccc;
 }
-
 @media print {
-    code[class*='language-'],
-    pre[class*='language-'] {
+    pre[class*='language-'],
+    code[class*='language-'] {
         text-shadow: none;
     }
 }
-
-/* Code blocks */
 pre[class*='language-'] {
     padding: 1em;
     margin: 0.5em 0;
     overflow: auto;
+    background: #fafafa;
 }
-
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-    background: #f5f2f0;
-}
-
-/* Inline code */
 :not(pre) > code[class*='language-'] {
-    padding: 0.1em;
+    padding: 0.1em 0.3em;
     border-radius: 0.3em;
-    white-space: normal;
+    color: #182c48;
+    background: #fafafa;
 }
-
+/*********************************************************
+* Tokens
+*/
+.namespace {
+    opacity: 0.7;
+}
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: var(--color-blue-pastel);
+    color: #d6d6d6;
 }
-
 .token.punctuation {
-    color: var(--color-grey-dark);
+    color: #91bd87;
 }
-
-.token.namespace {
-    opacity: 0.7;
-}
-
 .token.property,
 .token.tag,
 .token.boolean,
@@ -90,43 +70,37 @@ pre[class*='language-'] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-    color: var(--color-grey-dim);
+    color: #182c48;
 }
-
 .token.selector,
 .token.attr-name,
 .token.string,
 .token.char,
 .token.builtin,
 .token.inserted {
-    color: var(--color-blue-pale);
+    color: #91bd87;
 }
-
 .token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
 .style .token.string {
-    color: var(--color-khaki-darker);
+    color: #8c8c8c;
+    background: #fafafa;
 }
-
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-    color: var(--color-blue-pale);
+    color: #6c87b7;
 }
-
-.token.function,
-.token.class-name {
-    color: var(--color-khaki-dark);
+.token.function {
+    color: #484b26;
 }
-
 .token.regex,
 .token.important,
 .token.variable {
-    color: var(--color-khaki-clasic);
+    color: #8c8c8c;
 }
-
 .token.important,
 .token.bold {
     font-weight: bold;
@@ -134,7 +108,29 @@ pre[class*='language-'] {
 .token.italic {
     font-style: italic;
 }
-
 .token.entity {
     cursor: help;
+}
+/*********************************************************
+* Line highlighting
+*/
+pre[data-line] {
+    position: relative;
+}
+pre[class*='language-'] > code[class*='language-'] {
+    position: relative;
+    z-index: 1;
+}
+.line-highlight {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: inherit 0;
+    margin-top: 1em;
+    background: #91bd87;
+    box-shadow: inset 5px 0 0 #484b26;
+    z-index: 0;
+    pointer-events: none;
+    line-height: inherit;
+    white-space: pre;
 }
