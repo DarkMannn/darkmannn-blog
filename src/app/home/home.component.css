@@ -9,7 +9,7 @@
 .home__title {
     font-size: 30px;
     font-weight: 400;
-    border-bottom: 3px solid var(--color-black-turtle);
+    border-bottom: 3px solid var(--color-black-snail);
     text-transform: uppercase;
 
     padding-bottom: 30px;
@@ -51,7 +51,7 @@
     font-size: 16px;
     text-align: center;
     font-family: 'RobotoMono';
-    color: var(--color-lime-turtle);
+    color: var(--color-gold-snail);
 }
 
 .home__row-words-item {

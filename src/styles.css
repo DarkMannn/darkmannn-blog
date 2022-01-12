@@ -56,19 +56,21 @@
     --max-width: 700px;
 
     /* Color palette */
-    --color-black-turtle: #1a1a14;
-    --color-navy-turtle: #182c48;
-    --color-lime-turtle: #91bd87;
-    --color-green-turtle: #484b26;
-    --color-teal-turtle: #6c87b7;
-    --shadow-black-turtle: rgb(26, 26, 20, 0.3);
+    --color-black-snail: #130c07;
+    --color-gold-snail: #ecb42c;
+    --color-brown-snail: #9c6757;
+    --color-maroon-snail: #7c1a07;
+    --color-tan-snail: #f9efd1;
+    --shadow-black-snail: rgb(19, 12, 7, 0.3);
+
+    --color-tan-dark-snail: #d8d0b7; /* code only */
 }
 
 /* Defaults */
 :root {
     font-family: 'Roboto', sans-serif;
     background-color: white;
-    color: var(--color-black-turtle);
+    color: var(--color-black-snail);
 }
 
 a {
@@ -76,14 +78,14 @@ a {
     transition: all 0.15s ease-in;
 }
 a:link {
-    color: var(--color-lime-turtle);
+    color: var(--color-gold-snail);
 }
 a:visited {
-    color: var(--color-lime-turtle);
+    color: var(--color-gold-snail);
 }
 a:hover {
-    color: var(--color-green-turtle);
+    color: var(--color-brown-snail);
 }
 a:active {
-    color: var(--color-green-turtle);
+    color: var(--color-brown-snail);
 }
