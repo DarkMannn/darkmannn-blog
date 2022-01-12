@@ -11,9 +11,16 @@ const routes: Routes = [
                 redirectTo: 'home',
             },
             {
-                path: 'home',
+                path: 'about',
                 loadChildren: () =>
-                    import('./home/home.module').then((m) => m.HomeModule),
+                    import('./about/about.module').then((m) => m.AboutModule),
+            },
+            {
+                path: 'author',
+                loadChildren: () =>
+                    import('./author/author.module').then(
+                        (m) => m.AuthorModule
+                    ),
             },
             {
                 path: 'blog',
@@ -22,7 +29,7 @@ const routes: Routes = [
             },
         ],
     },
-    { path: '**', redirectTo: 'slow-programmer/home' },
+    { path: '**', redirectTo: 'slow-programmer/about' },
 ];
 
 @NgModule({

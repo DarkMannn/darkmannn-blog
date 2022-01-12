@@ -50,10 +50,8 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-
-    padding-top: 100px;
 }
 
 /* Classes */
@@ -83,7 +81,7 @@
     text-decoration: none;
     color: var(--color-gold-snail);
 
-    padding: 5px;
+    padding: 10px;
 
     transition: all 0.15s ease-in;
 }
@@ -92,39 +90,6 @@
     transform: scale(1.1, 1.1);
 }
 
-.blog__footer-contact {
-    font-size: 30px;
-    border-bottom: 2px solid var(--color-black-snail);
-
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-}
-
-.blog__footer-social {
-    width: 300px;
-    margin-bottom: 30px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.blog__footer-social--icon {
-    display: block;
-    width: 30px;
-    height: 30px;
-
-    color: var(--color-gold-snail);
-
-    transition: all 0.15s ease-in;
-}
-.blog__footer-social--icon:hover {
-    color: var(--color-brown-snail);
-    transform: scale(1.1, 1.1);
-}
-
 .blog__footer-brand {
     font-weight: 500;
-    margin-top: 60px;
 }

@@ -7,6 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     YEAR = new Date().getFullYear();
-    NICKNAME = 'darkmannn';
-    EMAIL = 'darko.milosevic@darkmannn.dev';
 }

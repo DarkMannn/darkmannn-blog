@@ -1,43 +1,19 @@
 <section id="blog">
-    <header routerLink="/slow-programmer/home">
+    <header routerLink="/slow-programmer/about">
         <h1 class="blog__header-1">Slow Programmer</h1>
         <h2 class="blog__header-2">Blog by DarkMannn</h2>
     </header>
     <nav>
-        <a class="blog__nav-link" routerLink="/slow-programmer/home">HOME</a>
+        <a class="blog__nav-link" routerLink="/slow-programmer/about">ABOUT</a>
         <a class="blog__nav-link" routerLink="/slow-programmer/blog">BLOG</a>
+        <a class="blog__nav-link" routerLink="/slow-programmer/author"
+            >AUTHOR</a
+        >
     </nav>
     <main>
         <router-outlet></router-outlet>
     </main>
     <footer>
-        <div class="blog__footer-contact">CONTACT</div>
-        <div class="blog__footer-social">
-            <a
-                class="blog__footer-social--icon"
-                href="https://www.linkedin.com/in/{{ NICKNAME }}"
-                rel="noopener noreferrer"
-                target="_blank"
-            >
-                <svg-icon src="assets/images/linkedin-icon.svg"></svg-icon>
-            </a>
-            <a
-                class="blog__footer-social--icon"
-                href="https://github.com/{{ NICKNAME }}"
-                rel="noopener noreferrer"
-                target="_blank"
-            >
-                <svg-icon src="assets/images/github-icon.svg"></svg-icon>
-            </a>
-            <a
-                class="blog__footer-social--icon"
-                href="mailto:{{ EMAIL }}?subject=Hey {{ NICKNAME }}%21"
-                rel="noopener noreferrer"
-                target="_blank"
-            >
-                <svg-icon src="assets/images/email-icon.svg"></svg-icon>
-            </a>
-        </div>
-        <div class="blog__footer-brand">{{ YEAR }} © Darko Milosevic</div>
+        <div class="blog__footer-brand">{{ YEAR }} © Slow Programmer</div>
     </footer>
 </section>

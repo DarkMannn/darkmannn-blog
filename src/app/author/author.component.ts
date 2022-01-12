@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css'],
+    selector: 'app-author',
+    templateUrl: './author.component.html',
+    styleUrls: ['./author.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class AuthorComponent implements OnInit {
     rows = [
         ['who'],
         ['developer', 'blogger', 'minimalist'],
@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
         ['how'],
         ['slowly', 'thoroughly', 'with_focus'],
     ];
+    NICKNAME = 'darkmannn';
+    EMAIL = 'darko.milosevic@darkmannn.dev';
 
     constructor() {}
 

@@ -1,0 +1,45 @@
+<section id="author">
+    <h1 class="author__title">DarkMannn</h1>
+    <div *ngFor="let row of rows; even as isEven">
+        <p class="author__row-title" *ngIf="isEven">{{ row }}</p>
+        <p class="author__row-words" *ngIf="!isEven">
+            <span
+                class="author__row-words-item"
+                *ngFor="let item of row; first as isFirst"
+            >
+                <span>{{ item }}</span>
+            </span>
+        </p>
+    </div>
+    <img
+        class="author__image"
+        src="assets/images/snail-right.png"
+        alt="snail"
+    />
+    <div class="author__social">
+        <a
+            class="author__social--icon"
+            href="https://www.linkedin.com/in/{{ NICKNAME }}"
+            rel="noopener noreferrer"
+            target="_blank"
+        >
+            <svg-icon src="../../assets/images/linkedin-icon.svg"></svg-icon>
+        </a>
+        <a
+            class="author__social--icon"
+            href="https://github.com/{{ NICKNAME }}"
+            rel="noopener noreferrer"
+            target="_blank"
+        >
+            <svg-icon src="assets/images/github-icon.svg"></svg-icon>
+        </a>
+        <a
+            class="author__social--icon"
+            href="mailto:{{ EMAIL }}?subject=Hey {{ NICKNAME }}%21"
+            rel="noopener noreferrer"
+            target="_blank"
+        >
+            <svg-icon src="assets/images/email-icon.svg"></svg-icon>
+        </a>
+    </div>
+</section>
