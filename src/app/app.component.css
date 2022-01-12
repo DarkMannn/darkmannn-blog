@@ -90,6 +90,12 @@
     transform: scale(1.1, 1.1);
 }
 
+.blog__nav-link--active {
+    color: var(--color-brown-snail);
+    transform: scale(1.1, 1.1);
+    text-decoration: underline;
+}
+
 .blog__footer-brand {
     font-weight: 500;
 }
