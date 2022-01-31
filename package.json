@@ -5,13 +5,13 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve --port 8080",
-        "build": "ng build",
         "watch": "ng build --watch --configuration development",
+        "build": "ng build",
+        "build:prod": "ng build --prod && scully --prod --scanRoutes",
         "scully": "scully --scanRoutes",
-        "scully:serve": "scully serve",
         "prep": "yarn build && yarn scully",
-        "serve": "yarn scully:serve",
-        "prep:serve": "yarn prep && yarn serve",
+        "scully:serve": "scully serve",
+        "prep:serve": "yarn prep && yarn scully:serve",
         "insert": "ng generate @scullyio/init:post --target blog --meta-data-file scripts/default-frontmatter.yml --name $1"
     },
     "private": true,
