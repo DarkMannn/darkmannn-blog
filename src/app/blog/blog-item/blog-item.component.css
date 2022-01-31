@@ -39,6 +39,19 @@
     object-fit: cover;
 }
 
+.blog-item__info {
+    display: block;
+    margin: var(--blog-item-margin) 0;
+    padding: var(--blog-item-two-padding);
+
+    background-color: var(--color-grey-rose);
+    color: white;
+
+    font-family: 'Roboto';
+    font-size: 18px;
+    font-weight: 400;
+}
+
 .blog-item__content {
     font-family: 'Roboto';
     font-size: 18px;
