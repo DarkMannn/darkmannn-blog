@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,17 +14,15 @@ export class BlogThumbnailComponent {
     @Input() tag: string = '';
     @Input() link: string = '';
 
-    isLoading = false;
+    @Output() load = new EventEmitter<void>();
 
-    constructor(private _router: Router) {
-        this.isLoading = true;
-    }
+    constructor(private _router: Router) {}
 
     openBlogItem() {
         this._router.navigateByUrl(this.link);
     }
 
-    turnOffLoading() {
-        this.isLoading = false;
+    onLoad() {
+        this.load.emit();
     }
 }

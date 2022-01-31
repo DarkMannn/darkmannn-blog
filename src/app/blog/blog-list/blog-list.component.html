@@ -1,12 +1,19 @@
 <section id="blog-list">
     <div *ngFor="let filteredLink of filteredLinks">
         <app-blog-thumbnail
+            [ngStyle]="{ display: allLinksLoaded ? '' : 'none' }"
             [thumbnail]="filteredLink.thumbnail || ''"
             [title]="filteredLink.title || ''"
             [description]="filteredLink.description || ''"
             [date]="filteredLink.date || ''"
             [tag]="filteredLink.tag || ''"
             [link]="filteredLink.route || ''"
+            (load)="onLinkLoad()"
         ></app-blog-thumbnail>
+    </div>
+    <div *ngIf="!allLinksLoaded" class="blog-list__loader">
+        <div class="blog-list__loader--dot"></div>
+        <div class="blog-list__loader--dot"></div>
+        <div class="blog-list__loader--dot"></div>
     </div>
 </section>
