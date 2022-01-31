@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     {
-        path: 'slow-programmer',
+        path: 'balanced-coder',
         children: [
             {
                 path: '',
@@ -29,7 +29,7 @@ const routes: Routes = [
             },
         ],
     },
-    { path: '**', redirectTo: 'slow-programmer/about' },
+    { path: '**', redirectTo: 'balanced-coder/about' },
 ];
 
 @NgModule({

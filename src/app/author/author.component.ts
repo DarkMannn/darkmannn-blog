@@ -12,7 +12,7 @@ export class AuthorComponent implements OnInit {
         ['what'],
         ['typescript', 'full-stack', 'aws'],
         ['how'],
-        ['slowly', 'thoroughly', 'with_focus'],
+        ['thorough', 'unbiased', 'open_minded'],
     ];
     NICKNAME = 'darkmannn';
     EMAIL = 'darko.milosevic@darkmannn.dev';

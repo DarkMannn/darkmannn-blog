@@ -14,7 +14,8 @@
 .blog-item__title {
     font-size: 40px;
     font-weight: 700;
-    color: var(--color-black-snail);
+
+    color: var(--color-black-nuance);
 
     margin: calc(var(--blog-item-margin) * 2) 0;
 }
@@ -23,7 +24,7 @@
     width: 100%;
 
     font-weight: 500;
-    color: var(--color-maroon-snail);
+    color: var(--color-grey-rose);
 
     display: flex;
     flex-flow: row nowrap;
@@ -46,13 +47,13 @@
     width: 100%;
 }
 
-.blog-item__content > h3 {
-    color: var(--color-gold-snail);
-}
-
 .blog-item__content > h2,
 h4 {
-    color: var(--color-brown-snail);
+    color: var(--color-grey-blue);
+}
+
+.blog-item__content > h3 {
+    color: var(--color-grey-rose);
 }
 
 /* Blog - Code blocks */
@@ -61,7 +62,6 @@ pre {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 1em;
-    /* padding-left: 3.8em; in the line-numbers class */
     margin: 0;
 
     overflow-x: scroll;

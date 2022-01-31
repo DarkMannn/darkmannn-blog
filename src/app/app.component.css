@@ -18,7 +18,7 @@
 
 #blog > header {
     grid-area: header;
-    border-bottom: 1px solid var(--color-black-snail);
+    border-bottom: var(--border-width) solid var(--color-grey-dim);
 
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@
 
 #blog > nav {
     grid-area: nav;
-    border-bottom: 1px solid var(--color-black-snail);
+    border-bottom: var(--border-width) solid var(--color-grey-dim);
 
     display: flex;
     flex-direction: row;
@@ -42,7 +42,7 @@
     grid-area: main;
 
     padding: 100px 0;
-    border-bottom: 1px solid var(--color-black-snail);
+    border-bottom: var(--border-width) solid var(--color-grey-dim);
 }
 
 #blog > footer {
@@ -60,7 +60,7 @@
 
     font-family: 'Roboto';
     font-weight: 100;
-    font-size: 55px;
+    font-size: 65px;
 
     text-align: center;
 }
@@ -70,28 +70,28 @@
 
     font-family: 'Roboto';
     font-weight: 700;
-    font-size: 18px;
+    font-size: 25px;
 
     text-align: center;
-    color: var(--color-maroon-snail);
+    color: var(--color-black-nuance);
 }
 
 .blog__nav-link {
     font-weight: 700;
     text-decoration: none;
-    color: var(--color-gold-snail);
+    color: var(--color-grey-blue);
 
     padding: 10px;
 
     transition: all 0.15s ease-in;
 }
 .blog__nav-link:hover {
-    color: var(--color-brown-snail);
+    filter: brightness(0.7);
     transform: scale(1.1, 1.1);
 }
 
 .blog__nav-link--active {
-    color: var(--color-brown-snail);
+    filter: brightness(0.7);
     transform: scale(1.1, 1.1);
     text-decoration: underline;
 }

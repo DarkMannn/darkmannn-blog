@@ -4,7 +4,7 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
-    color: var(--color-black-snail);
+    color: var(--color-grey-dim);
     font-size: 1em;
     text-shadow: none;
     font-family: RobotoMono, monospace;
@@ -28,7 +28,7 @@ code[class*='language-']::selection,
 pre[class*='language-']::mozselection,
 code[class*='language-']::mozselection {
     text-shadow: none;
-    background: #cccccc;
+    background: #fafafa;
 }
 @media print {
     pre[class*='language-'],
@@ -58,21 +58,21 @@ pre[class*='language-'] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: var(--color-tan-dark-snail);
+    color: var(--color-grey-light);
 }
 .token.punctuation {
-    color: var(--color-maroon-snail);
+    color: var(--color-black-nuance);
 }
 .token.property,
 .token.tag,
 .token.constant,
 .token.symbol,
 .token.deleted {
-    color: var(--color-black-snail);
+    color: var(--color-grey-blue);
 }
 .token.boolean,
 .token.number {
-    color: var(--color-maroon-snail);
+    color: var(--color-black-nuance);
 }
 .token.selector,
 .token.attr-name,
@@ -80,28 +80,28 @@ pre[class*='language-'] {
 .token.char,
 .token.builtin,
 .token.inserted {
-    color: var(--color-gold-snail);
+    color: var(--color-grey-rose);
 }
 .token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
 .style .token.string {
-    color: var(--color-maroon-snail);
+    color: var(--color-grey-blue);
     background: #fafafa;
 }
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-    color: var(--color-maroon-snail);
+    color: var(--color-grey-blue);
 }
 .token.function {
-    color: var(--color-brown-snail);
+    color: var(--color-black-nuance);
 }
 .token.regex,
 .token.important,
 .token.variable {
-    color: #8c8c8c;
+    color: var(--color-grey-pastel);
 }
 .token.important,
 .token.bold {
@@ -129,8 +129,8 @@ pre[class*='language-'] > code[class*='language-'] {
     right: 0;
     padding: inherit 0;
     margin-top: 1em;
-    background: var(--color-gold-snail);
-    box-shadow: inset 5px 0 0 var(--color-brown-snail);
+    background: var(--color-grey-blue);
+    box-shadow: inset 5px 0 0 var(--shadow-grey-dim);
     z-index: 0;
     pointer-events: none;
     line-height: inherit;

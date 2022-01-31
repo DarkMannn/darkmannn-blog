@@ -8,8 +8,10 @@
 
 .author__title {
     font-size: 25px;
-    font-weight: 300;
-    border-bottom: 1px solid var(--color-black-snail);
+    font-weight: 400;
+    border-bottom: var(--border-width) solid var(--color-grey-dim);
+
+    color: var(--color-black-nuance);
 
     padding: 0 70px 30px;
     margin: 15px 0 30px;
@@ -25,8 +27,9 @@
     margin-bottom: 0;
 
     font-size: 14px;
-    font-weight: bold;
     text-align: left;
+
+    color: var(--color-grey-rose);
 }
 
 .author__row-words {
@@ -40,7 +43,6 @@
     font-size: 16px;
     text-align: center;
     font-family: 'RobotoMono';
-    color: var(--color-gold-snail);
 }
 
 .author__row-words-item {
@@ -67,14 +69,14 @@
 
 .author__social--icon {
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 
-    color: var(--color-gold-snail);
+    color: var(--color-grey-blue);
 
     transition: all 0.15s ease-in;
 }
 .author__social--icon:hover {
-    color: var(--color-brown-snail);
+    filter: brightness(0.7);
     transform: scale(1.1, 1.1);
 }

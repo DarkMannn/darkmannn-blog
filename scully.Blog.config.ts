@@ -7,7 +7,7 @@ export const config: ScullyConfig = {
     projectName: 'Blog',
     outDir: './dist/static',
     routes: {
-        '/slow-programmer/blog/:slug': {
+        '/balanced-coder/blog/:slug': {
             type: 'contentFolder',
             slug: {
                 folder: './blog-posts',
