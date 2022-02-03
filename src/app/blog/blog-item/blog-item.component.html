@@ -1,7 +1,9 @@
 <section class="blog-item">
     <div class="blog-item__title">{{ currentLink?.title }}</div>
     <div class="blog-item__metadata">
-        <span class="blog-item__metadata-tag">[ {{ currentLink?.tag }} ]</span>
+        <span class="blog-item__metadata-tag">
+            <span *ngFor="let tag of currentLink?.tags">[ {{ tag }} ]</span>
+        </span>
         <span class="blog-item__metadata-date">{{ currentLink?.date }}</span>
     </div>
     <img

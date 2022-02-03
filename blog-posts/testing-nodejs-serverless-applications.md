@@ -4,7 +4,9 @@ description: Elaborating on how to properly test your code in a serverless envir
 info: This article was first published on https://blog.logrocket.com/testing-node-serverless-applications-aws-lambda-functions. It was moved here when I started the 'Balanced Coder' blog.
 thumbnail: assets/images/serverless-testing.jpg
 date: 28/01/2020
-tag: serverless
+tags:
+    - serverless
+    - node.js
 keywords: Node.js, Serverless, Testing, Microservices, Tutorial
 published: true
 ---

@@ -4,7 +4,8 @@ description: This vas a very fun project for me. I hope you will like it too!
 info: This article was first published on https://blog.logrocket.com/online-radio-server-pure-node-js. It was moved here when I started the 'Balanced Coder' blog.
 thumbnail: assets/images/online-radio.jpg
 date: 04/05/2020
-tag: node
+tags:
+    - node.js
 keywords: Node.js, Online Radio, Radio Server, Tutorial
 published: true
 ---

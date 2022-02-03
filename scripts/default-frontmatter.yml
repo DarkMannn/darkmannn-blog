@@ -2,5 +2,6 @@ title: Override Title
 description: Override description
 thumbnail: assets/images/balance-maxi.png
 date: dd/mm/yyyy
-tag: override-tag
+tags:
+    - override-tag
 published: true
