@@ -11,7 +11,9 @@
         [src]="currentLink?.thumbnail"
         alt="thumbnail"
     />
-    <div class="blog-item__info">{{ currentLink?.info }}</div>
+    <div class="blog-item__info" *ngIf="currentLink?.info">
+        {{ currentLink?.info }}
+    </div>
     <div class="blog-item__content line-numbers">
         <scully-content></scully-content>
     </div>
