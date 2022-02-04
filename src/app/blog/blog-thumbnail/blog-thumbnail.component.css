@@ -74,6 +74,7 @@
     width: var(--thumbnail-width-narrow);
     height: calc(var(--thumbnail-height-narrow) / 2);
 
+    background-color: var(--color-grey-dim);
     object-fit: cover;
 }
 @media (min-width: 650px) {
