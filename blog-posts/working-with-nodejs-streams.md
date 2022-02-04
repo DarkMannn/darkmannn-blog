@@ -10,7 +10,7 @@ keywords: Node.js, Streams, Backpressure, Readable, Writable, Transform, Streami
 published: true
 ---
 
-# Introduction
+## Introduction
 
 The word `Stream` is used in computer science to describe chunked data collection, which is not available
 all at once but across time. A stream is basically a collection of values, similar to an array, but
@@ -24,12 +24,12 @@ interfaces.
 We are going to focus on the latest `Stream 3` implementation, along with new useful APIs that
 come along with Node v10+.
 
-# Stream Basics
+## Stream Basics
 
 All streams are instances of EventEmitter — which means that they emit events that can be used to
 read and write data.
 
-## Stream types
+### Stream types
 
 There are four fundamental stream types within Node.js.
 
@@ -53,7 +53,7 @@ Transform:
 -   streams similar to Duplex streams, with the ability to modify or transform data as it is read and written
 -   example: compress stream (zlib.createGzip)
 
-## Stream modes
+### Stream modes
 
 There are two modes that Node.js stream operate in:
 
@@ -65,7 +65,7 @@ There are two modes that Node.js stream operate in:
     -   set by `objectMode` flag while creating a Stream
     -   internal buffering algorithm counts objects rather than bytes
 
-## Buffering
+### Buffering
 
 Every stream has an internal buffer that will be used for storing data. Readable and writable streams
 have one each, and it can be retrieved using `readable.readableBuffer` and `writable.writableBuffer`.
@@ -75,7 +75,7 @@ Duplex and Transform streams have two separate buffers, allowing each side to op
 Size of the buffer is set by `highWatermarkOption`. For streams operating in standard mode, it specifies
 buffer size and for streams in object mode, it specifies number of objects.
 
-## Backpressure
+### Backpressure
 
 Backpressure is a concept that is difficult to grasp for people who start working with the Stream API, which
 makes it a common source of bugs. Without backpressure, streams would not be as efficient as it is one of the
@@ -97,12 +97,12 @@ A few things may happen if a backpressure system isn’t taken into consideratio
 Backpressure handles reliable, lossless and memory efficient transfer of data, which is the primary purpose
 of Node.js Stream API.
 
-# API for Stream Consumers
+## API for Stream Consumers
 
 Many Node.js applications use streams. Having familiarity with the API for Stream Consumers allows you to use
 and consume streams properly.
 
-## Consuming Writable Streams
+### Consuming Writable Streams
 
 Every writable stream instance has these methods:
 
@@ -230,7 +230,7 @@ const writeProcess = async (writable) => {
 })();
 ```
 
-## Consuming Readable Streams
+### Consuming Readable Streams
 
 Readable streams can operate in two modes:
 
@@ -386,7 +386,7 @@ const myReadable = Fs.createReadStream(Path.join(__dirname, './source.txt'));
 })();
 ```
 
-## Consuming Duplex and Transform Streams
+### Consuming Duplex and Transform Streams
 
 Duplex streams implement both the readable and writable interface. One kind of duplex stream is a
 `PassThrough` stream. This type of stream is used when some API expects readable stream as a parameter, and
@@ -444,7 +444,7 @@ const compressStream = Zlib.createGzip();
 myReadable.pipe(compressStream).pipe(myWritable);
 ```
 
-## Useful class methods (Node v10+)
+### Useful class methods (Node v10+)
 
 -   `Stream.finished(stream, callback)`
     -   allows you to get notified when a stream is no longer readable, writable or has experienced an error or a premature close.
@@ -521,7 +521,7 @@ const encryptionStream = Crypto.createCipheriv(
 
 ---
 
-# API for Stream Implementers
+## API for Stream Implementers
 
 Stream API is extendable and provides an interface for developers to create their own stream extensions.
 There are two ways to implement your own stream.
@@ -563,7 +563,7 @@ const myWritable = new Writable({
 
 A good thing to remember is that in this case, the required methods are not prefixed with underscore.
 
-## Implementing Writable Streams
+### Implementing Writable Streams
 
 In order for us to implement a writable stream, we need to provide a `writable._write()` method to send data
 to the underlying resource:
@@ -597,7 +597,7 @@ process.stdin.pipe(outStream).on('error', console.log);
 This stream is piping standard input to standard output, except when you enter forward dash, then the stream
 throws. This example servers the purpose of demonstration.
 
-## Implementing a Readable Stream
+### Implementing a Readable Stream
 
 To implement a custom readable stream, we must call the readable constructor and implement the
 `readable._read()` method (other methods are optional), and inside of it we must call `readable.push()`:
@@ -642,7 +642,7 @@ const randomNumbers = new RandomNumberStream();
 randomNumbers.pipe(process.stdout);
 ```
 
-## Implementing a Duplex Stream
+### Implementing a Duplex Stream
 
 A duplex stream implements both the readable and writable interfaces independent from one another. The duplex
 class prototypically inherits from stream.Readable and parasitically from stream.Writable (JavaScript does
@@ -680,7 +680,7 @@ const inOutStream = new Duplex({
 process.stdin.pipe(inOutStream).pipe(process.stdout);
 ```
 
-## Implementing a Transform Stream
+### Implementing a Transform Stream
 
 A transform stream is similar to a duplex stream (it is a type of duplex stream), but with a simpler
 interface. The output is computed from the input. There is no requirement that the output is the same size as
@@ -728,7 +728,7 @@ myReadable
 
 ---
 
-# Summary
+## Summary
 
 In this article we learned how to consume all of the Node.js Stream types. We also learned how to implement
 our own streams, and use their powerful features.
