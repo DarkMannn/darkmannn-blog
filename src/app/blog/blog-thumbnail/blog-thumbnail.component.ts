@@ -11,7 +11,7 @@ export class BlogThumbnailComponent {
     @Input() title: string = '';
     @Input() description: string = '';
     @Input() date: string = '';
-    @Input() tag: string = '';
+    @Input() tags: string[] = [];
     @Input() link: string = '';
 
     @Output() load = new EventEmitter<void>();

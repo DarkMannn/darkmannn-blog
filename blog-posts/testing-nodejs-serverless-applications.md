@@ -4,7 +4,9 @@ description: Elaborating on how to properly test your code in a serverless envir
 info: This article was first published on https://blog.logrocket.com/testing-node-serverless-applications-aws-lambda-functions. It was moved here when I started the 'Balanced Coder' blog.
 thumbnail: assets/images/serverless-testing.jpg
 date: 28/01/2020
-tag: serverless
+tags:
+    - serverless
+    - node.js
 keywords: Node.js, Serverless, Testing, Microservices, Tutorial
 published: true
 ---
@@ -13,7 +15,7 @@ We are all aware of the importance of tests when trying to write maintainable an
 
 In this article I’m going to show you several ways to make testing serverless applications a little bit easier and manageable. I’m going to focus on AWS, as it is one of the most popular cloud providers at this moment, and I’m going to write the code in Node.js since it is one of the most commonly used languages for serverless apps. Having said that, everything I mention here can be applied to other cloud providers and other programming languages as well.
 
-# Let’s dive into the problem
+## Let’s dive into the problem
 
 As we all know, there are, generally speaking, three types of tests:
 
@@ -442,7 +444,7 @@ This test encompasses every piece of the infrastructure that our lambda is going
 
 We can run this test in a staging/QA environment first, and then we can run it again on the actual production environment just to ensure everything is nicely connected. [Lambda aliases](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-alias.html) might help here, if we want to automate the flow. So we would first deploy the new version of the function, then run this end-to-end test, and then switch aliases if everything goes well, between currently active function and the newer version.
 
-# Summary
+## Summary
 
 You can find the entire code from this article on this [github repo](https://github.com/DarkMannn/testing-node-serverless-applications), if you’d like to see everything in one place.
 

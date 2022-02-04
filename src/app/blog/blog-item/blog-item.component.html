@@ -1,7 +1,9 @@
 <section class="blog-item">
     <div class="blog-item__title">{{ currentLink?.title }}</div>
     <div class="blog-item__metadata">
-        <span class="blog-item__metadata-tag">[ {{ currentLink?.tag }} ]</span>
+        <span class="blog-item__metadata-tag">
+            <span *ngFor="let tag of currentLink?.tags">[ {{ tag }} ]</span>
+        </span>
         <span class="blog-item__metadata-date">{{ currentLink?.date }}</span>
     </div>
     <img
@@ -9,7 +11,9 @@
         [src]="currentLink?.thumbnail"
         alt="thumbnail"
     />
-    <div class="blog-item__info">{{ currentLink?.info }}</div>
+    <div class="blog-item__info" *ngIf="currentLink?.info">
+        {{ currentLink?.info }}
+    </div>
     <div class="blog-item__content line-numbers">
         <scully-content></scully-content>
     </div>

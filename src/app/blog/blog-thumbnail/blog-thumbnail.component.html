@@ -10,7 +10,9 @@
         <div class="blog-thumbnail__title">{{ title }}</div>
         <div class="blog-thumbnail__description">{{ description }}</div>
         <div class="blog-thumbnail__metadata">
-            <span>[ {{ tag }} ]</span>
+            <span
+                ><span *ngFor="let tag of tags">[ {{ tag }} ]</span>
+            </span>
             <span>{{ date }}</span>
         </div>
     </div>

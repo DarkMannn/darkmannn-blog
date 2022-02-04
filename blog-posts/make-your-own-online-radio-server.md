@@ -4,7 +4,8 @@ description: This vas a very fun project for me. I hope you will like it too!
 info: This article was first published on https://blog.logrocket.com/online-radio-server-pure-node-js. It was moved here when I started the 'Balanced Coder' blog.
 thumbnail: assets/images/online-radio.jpg
 date: 04/05/2020
-tag: node
+tags:
+    - node.js
 keywords: Node.js, Online Radio, Radio Server, Tutorial
 published: true
 ---
@@ -24,7 +25,7 @@ The entire code from this article can be found on my GitHub repo [here](https://
 
 Let's begin!
 
-# Control panel
+## Control panel
 
 Since I love meddling with the terminal, and Node.js has a built in CLI, we will implement the control panel in form of a terminal GUI. After a little bit of research, I discovered that [neo-blessed](https://www.npmjs.com/package/neo-blessed) is a library made for this task.
 Neo-blessed has a concept of boxes. Those are basically windows that you can create, stylize and position in the terminal, similarly like components in a browser using HTML and CSS.
@@ -343,7 +344,7 @@ const _addPlaylistAndQueueListeners = () => {
 
 We have finished making the control panel. We can now, using the defined keyboard shortcuts, browse the songs in the playlist and send the songs we like to the queue.
 
-# Stream magic
+## Stream magic
 
 The songs from the queue should be sent to every consumer that is listening at the moment. This is the next thing we need to implement. As I already mentioned, `Queue` class will be in charge of showing the queued up songs in the GUI. On top of that this class will contain the logic for emitting the songs to the clients.
 
@@ -492,7 +493,7 @@ Consumers (i.e. writables), to which we must stream the data, will be stored in 
 
 Queued up songs will be streamed one by one, as we can see in the `this.playLoop()`, and if all of the songs are finished, we will repeat the last one. This way we make sure that the server will never stop streaming.
 
-# Server
+## Server
 
 Now, since we implemented the view layer and the streaming logic, the only thing we need to do is create a http server. We will use [Hapi.js](https://hapi.dev/), although any server would do just fine.
 
@@ -553,7 +554,7 @@ And here is our simple but nice web page:
 
 ![](https://paper-attachments.dropbox.com/s_F7642B9D951EEC078DDEC6615141FDE8949A5DF8A46D4A461DB62C03B25E5E40_1587502471867_Screenshot_20200421_225410.png)
 
-# Summary
+## Summary
 
 Phew, this article ended up being longer than I expected. For you, avid readers, here is the summary of what we did here:
 
