@@ -1,2 +1,11 @@
 identifier: kcs8ldkd6aocp91d
 allowErrorCollect: true
+appPort: 1864
+staticPort: 1668
+reloadPort: 2667
+hostName: localhost
+projectName: Blog
+homeFolder: /Users/darko/Programming/Projects/Blog
+distFolder: dist/Blog
+outDir: /Users/darko/Programming/Projects/Blog/dist/static
+handle404: ''
