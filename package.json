@@ -3,15 +3,10 @@
     "version": "1.0.0",
     "description": "Darkmannn's personal blog",
     "scripts": {
-        "ng": "ng",
         "start": "ng serve --port 8080",
-        "watch": "ng build --watch --configuration development",
-        "build": "ng build",
-        "build:prod": "ng build --prod && scully --prod --scanRoutes",
-        "scully": "scully --scanRoutes",
-        "prep": "yarn build && yarn scully",
-        "scully:serve": "scully serve",
-        "prep:serve": "yarn prep && yarn scully:serve",
+        "watch:1": "ng build --watch --configuration development",
+        "watch:2": "scully --scanRoutes --watch",
+        "build": "ng build --prod && scully --prod --scanRoutes",
         "insert": "ng generate @scullyio/init:post --target blog-posts --meta-data-file scripts/default-frontmatter.yml --name $1"
     },
     "private": true,
